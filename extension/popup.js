@@ -1,58 +1,40 @@
-document.getElementById("scanBtn").addEventListener("click", () => {
+let currentURL = "";
 
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+chrome.tabs.query(
+    {
+        active:true,
+        currentWindow:true
+    },
+    function(tabs){
 
-        let url = tabs[0].url;
-        let score = 0;
+        currentURL = tabs[0].url;
 
-        document.getElementById("website").innerText = url;
+        document.getElementById("url").innerText =
+            currentURL;
+    }
+);
 
-        // Rule 1: Long URL
-        if (url.length > 50) score += 20;
+document
+.getElementById("checkBtn")
+.addEventListener("click", function(){
 
-        // Rule 2: Contains '@'
-        if (url.includes("@")) score += 30;
+    const result = analyzeURL(currentURL);
 
-        // Rule 3: Contains IP address
-        let ipPattern = /(\d{1,3}\.){3}\d{1,3}/;
-        if (ipPattern.test(url)) score += 30;
+    if(result.status === "Safe"){
 
-        // Rule 4: Too many hyphens
-        let hyphenCount = (url.match(/-/g) || []).length;
-        if (hyphenCount >= 2) score += 10;
+        document.getElementById("status").innerHTML =
+            "SAFE";
 
-        // Rule 5: Suspicious words
-        let keywords = [
-            "login",
-            "verify",
-            "update",
-            "secure",
-            "account",
-            "banking",
-            "signin"
-        ];
+    }else{
 
-        keywords.forEach(word => {
-            if (url.toLowerCase().includes(word)) {
-                score += 10;
-            }
-        });
+        document.getElementById("status").innerHTML =
+            "PHISHING";
 
-        // Maximum score = 100
-        if (score > 100) score = 100;
+    }
 
-        let result = "";
+    document.getElementById("score").innerHTML =
+        "Risk Score: " + result.score + "%";
 
-        if (score < 30) {
-            result = "🟢 SAFE\nRisk Score: " + score + "/100";
-        } else if (score < 60) {
-            result = "🟡 SUSPICIOUS\nRisk Score: " + score + "/100";
-        } else {
-            result = "🔴 PHISHING DETECTED\nRisk Score: " + score + "/100";
-        }
-
-        document.getElementById("result").innerText = result;
-
-    });
-
+    document.getElementById("reason").innerHTML =
+        result.reasons.join("<br>");
 });
