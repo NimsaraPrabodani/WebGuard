@@ -5,16 +5,21 @@ history_bp = Blueprint("history_bp", __name__)
 
 @history_bp.route("/history", methods=["GET"])
 def history():
-    data = collection.find().sort("date", -1)
+    try:
+        data = collection.find().sort("date", -1)
 
-    result = []
+        result = []
 
-    for i in data:
-        result.append({
-            "url": i["url"],
-            "score" :i["score"],
-            "status":i["status"],
-            "date":str(i["date"])
-        })
+        for i in data:
+            result.append({
+                "url": i.get("url"),
+                "score": i.get("score"),
+                "status": i.get("status"),
+                "reasons": i.get("reasons", []),
+                "date": str(i.get("date"))
+            })
 
         return jsonify(result)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
