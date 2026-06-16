@@ -3,3 +3,12 @@ https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-De
 
 Dashboard Wireframe Link
 https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=36-13&t=UiDN4GasOO68G7NO-1
+
+URL Scanner Wireframe
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=42-13&t=UiDN4GasOO68G7NO-1
+
+Result page Wireframe
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=44-258&t=UiDN4GasOO68G7NO-1
+
+Scan History Wireframe
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=46-33&t=UiDN4GasOO68G7NO-1
