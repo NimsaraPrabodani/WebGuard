@@ -1,2 +1,5 @@
 Landing Page Link
 https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=1-3&t=gLCZ5mvO5NyqWebn-1
+
+Dashboard Wireframe Link
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=36-13&t=UiDN4GasOO68G7NO-1
