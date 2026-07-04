@@ -1,8 +1,8 @@
-Dashboard UI
-https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=59-53&t=F8WRzaLIqfjeEwnL-1
+User Dashboard UI
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=59-53&t=VW6B8JgCO2gGzzat-1
 
 Landing Page UI
 https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=75-133&t=h2fhKYYAzF3QDNJ7-1
 
 URL Scanner UI
-https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=86-78&t=h2fhKYYAzF3QDNJ7-1
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=86-78&t=VW6B8JgCO2gGzzat-1
