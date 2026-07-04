@@ -9,3 +9,9 @@ https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-De
 
 Result Page UI
 https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=95-86&t=VW6B8JgCO2gGzzat-1
+
+Scan History UI
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=99-97&t=lzurNWbz6Lx5lpkP-1
+
+Admin Dashboard UI
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=101-63&t=lzurNWbz6Lx5lpkP-1
