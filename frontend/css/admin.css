@@ -1,0 +1,24 @@
+/* =========================================================
+   admin.css — ONLY used on admin-dashboard.html. Extra
+   panels that don't exist on the User Dashboard: system
+   health, manage-reports queue. Load style.css and
+   dashboard.css first.
+   ========================================================= */
+
+/* Scanned-by column (admin only — user dashboard has no accounts) */
+.user-cell{color:var(--text-muted);font-size:12.5px;}
+
+/* System health */
+.health-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.health-item{
+  background:var(--surface-2);border:1px solid var(--border-soft);
+  border-radius:10px;padding:11px 12px;
+}
+.health-item span{display:block;font-size:11px;color:var(--text-muted);margin-bottom:4px;}
+.health-item strong{font-family:var(--font-mono);font-size:15px;color:var(--text);}
+.health-item.full{grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;}
+
+/* Manage reports queue (admin reviews what users reported) */
+.reports-panel{border-color:rgba(255,230,0,0.35);box-shadow:0 0 26px -10px var(--warn-glow);}
+.reports-panel .panel-head h3 svg{color:var(--warn);}
+.reports-count{font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--warn);margin:2px 0 4px;}

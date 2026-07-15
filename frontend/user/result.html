@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebGuard — Scan Result</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/result.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <div class="brand-text"><strong>WebGuard</strong><span>Phishing Detection System</span></div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/></svg>
+        Dashboard
+      </a>
+      <a href="checker.html" class="nav-item active" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></svg>
+        Scan URL
+      </a>
+      <a href="history.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        Scan History
+      </a>
+      <a href="about.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.5 2.5 0 114 2c-.9.7-1.5 1.3-1.5 2.4"/><circle cx="12" cy="16.7" r=".3" fill="currentColor"/></svg>
+        Help &amp; Support
+      </a>
+    </nav>
+
+    <div class="status-card">
+      <span class="shield-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <strong>Stay Safe Online</strong>
+      <p>We help you detect phishing websites and keep you protected.</p>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="topbar">
+      <button id="menuToggle" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <h1>Scan Result</h1>
+      <div class="topbar-right">
+        <div class="role-toggle">
+          <a href="index.html">User</a>
+          <a href="../admin/dashboard.html">Admin</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <h2 class="page-title">Scan Result</h2>
+      <p class="page-sub">Here is the analysis result for submitted URL</p>
+
+      <div class="result-grid">
+
+        <!-- Main column -->
+        <div class="result-main">
+
+          <!-- Scanned URL -->
+          <div class="r-panel">
+            <div class="scanned-url-row">
+              <div class="scanned-url-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/>
+                </svg>
+                <div>
+                  <h4>Scanned URL</h4>
+                  <span id="scannedUrl">https://paypal-login-security.net</span>
+                </div>
+              </div>
+              <a href="checker.html" class="scan-another-btn">Scan Another URL</a>
+            </div>
+          </div>
+
+          <!-- Detection Result + Risk Score -->
+          <div class="detection-row">
+
+            <!-- Detection Result -->
+            <div class="r-panel detection-panel">
+              <h3>Detection Result</h3>
+              <div class="detection-body">
+                <div class="detection-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                  </svg>
+                </div>
+                <div class="detection-label">
+                  <strong>Dangerous</strong>
+                  <span>This website is potentially<br>harmful or suspicious.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Risk Score -->
+            <div class="r-panel risk-panel">
+              <h3>Risk Score</h3>
+              <div class="risk-score-num">92<sub>/100</sub></div>
+              <div class="risk-bar-wrap">
+                <div class="risk-bar-fill"></div>
+              </div>
+              <div class="risk-bar-labels">
+                <span>0</span>
+                <span>50</span>
+                <span>100</span>
+              </div>
+              <div class="risk-level">High Risk</div>
+              <div class="risk-note">Risk score indicates the potential threat level of this URL</div>
+            </div>
+
+          </div>
+
+          <!-- Detection Reasons -->
+          <div class="r-panel reasons-panel">
+            <h3>Detection Reasons</h3>
+            <div class="reasons-body">
+              <div class="reasons-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 4l9 16H3z"/>
+                  <path d="M12 10v4M12 17h.01" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <ul class="reasons-list">
+                <li>Suspicious domain name</li>
+                <li>Similar to known phishing domain</li>
+                <li>Excessive URL length</li>
+                <li>Low trust score</li>
+                <li>Hosting on a suspicious server</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Recommendations -->
+          <div class="r-panel reco-panel">
+            <h3>Recommendations</h3>
+            <div class="reco-body">
+              <div class="reco-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+                  <path d="M9 12l2 2 4-4" stroke-width="2"/>
+                </svg>
+              </div>
+              <ul class="reco-list">
+                <li>Do not enter any personal information.</li>
+                <li>Avoid visiting this website</li>
+                <li>Use the official website instead.</li>
+                <li>Report this URL if you believe it is harmful</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right sidebar -->
+        <div class="result-side">
+
+          <!-- Summary -->
+          <div class="side-panel">
+            <div class="side-panel-head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M7 3.5h7l3 3V20a.6.6 0 01-.6.6H7.6A.6.6 0 017 20V3.5z"/>
+                <path d="M9.5 11h5M9.5 14.5h5M9.5 8h3"/>
+              </svg>
+              <h4>Summary</h4>
+            </div>
+            <div class="summary-items">
+              <div class="summary-item">
+                <span>Domain</span>
+                <strong>paypal-login-security.net</strong>
+              </div>
+              <div class="summary-item">
+                <span>IP Address</span>
+                <strong>192.0.2.45</strong>
+              </div>
+              <div class="summary-item">
+                <span>Scanned At</span>
+                <strong>May 20, 2026 10.30 AM</strong>
+              </div>
+              <div class="summary-item">
+                <span>Scan Type</span>
+                <strong>URL Scan</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- What is this -->
+          <div class="side-panel">
+            <div class="side-panel-head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M9.5 9.3a2.5 2.5 0 114 2c-.9.7-1.5 1.3-1.5 2.4"/>
+                <circle cx="12" cy="16.7" r=".3" fill="currentColor"/>
+              </svg>
+              <h4>What is this?</h4>
+            </div>
+            <div class="what-body">
+              <p class="what-text">This URL is identified as potentially dangerous based on our phishing detection engine. Please take necessary precautions.</p>
+              <div class="danger-shield">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+                  <path d="M12 9v4M12 16h.01" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Need Help -->
+          <div class="side-panel">
+            <div class="side-panel-head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 18c0-3 2-5 5-5h8c3 0 5 2 5 5"/>
+                <circle cx="12" cy="8" r="4"/>
+              </svg>
+              <h4>Need Help ?</h4>
+            </div>
+            <div class="help-body">
+              <div class="help-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+                  <path d="M12 9v4M12 16h.01" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="help-text">If you think a web site is a false positive, you can report it to us.</p>
+            </div>
+            <button class="report-btn">Report Now</button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="app-footer">WebGuard · Independent Study Project, Group 05</footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
