@@ -1,42 +1,41 @@
-from flask import Blueprint, request,jsonify
+from flask import Blueprint, request, jsonify
 from utils.detector import analyze_url
 from database.mongo import collection
 from datetime import datetime
-
 
 check_bp = Blueprint("check_bp", __name__)
 
 @check_bp.route("/check-url", methods=["POST"])
 def check():
-    data = request.get_json()
-    url = data.get("url")
+    try:
+        data = request.get_json()
 
-    if not url:
-        return jsonify({"error":"URL is required"}), 400
-    
-    existing = collection.find_one({"url":url})
+        url = data.get("url")
 
-    if existing:
-        return jsonify({
-            "url": existing["url"],
-            "score": existing["score"],
-            "status": existing["status"],
-            
-    })
+        if not url:
+            return jsonify({"error": "URL is required"}), 400
 
-    score, status = analyze_url(url)
+        score, status, reasons = analyze_url(url)
 
-    record = {
-        "url" : url,
-        "score" : score,
-        "status": status,
-        "date":datetime.now()
-    }
+        record = {
+            "url": url,
+            "score": score,
+            "status": status,
+            "reasons": reasons,
+            "date": str(datetime.now())
+        }
 
-    collection.insert_one(record)
+        collection.update_one(
+            {"url": url},
+            {"$set": record},
+            upsert=True
+        )
 
-    return jsonify({
-    "url":url,
-    "score": score,
-    "status": status
-})
+
+        
+        record.pop("_id", None)
+
+        return jsonify(record)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
