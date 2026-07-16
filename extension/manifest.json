@@ -1,19 +1,26 @@
 {
   "manifest_version": 3,
+
   "name": "PhishingDetSys",
+
   "version": "1.0",
+
   "description": "Phishing Detection Browser Extension",
 
   "permissions": [
     "tabs",
-    "activeTab"
+    "activeTab",
     "storage"
+  ],
+
+  "host_permissions": [
+    "http://127.0.0.1:5000/*"
   ],
 
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icons/icon18.png",
+      "18": "icons/icon18.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
