@@ -15,3 +15,6 @@ https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-De
 
 Admin Dashboard UI
 https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=101-63&t=lzurNWbz6Lx5lpkP-1
+
+Browser Extention Popup
+https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=103-74&t=AN4UXCjJ2t7xJ8Nr-1
