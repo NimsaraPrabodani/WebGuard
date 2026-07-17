@@ -1,10 +1,17 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
 
-MONGO_URI = "mongodb+srv://user_admin:6789@cluster0.zolsgcr.mongodb.net/?appName=Cluster0"
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
 
 client = MongoClient(MONGO_URI)
 
 db = client["phishing_db"]
-collection = db["url_history"]
+
+url_collection = db["url_history"]
+admin_collection = db["admin"]
+
 
 print("MongoDB Connected Successfully!")
