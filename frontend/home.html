@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebGuard — Phishing Detection System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/hero-visual.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+        <path d="M9 12l2 2 4-4" stroke-width="2.2"/>
+      </svg>
+    </span>
+    <div class="logo-text">
+      <strong>WebGuard</strong>
+      <span>Phishing Detection System</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="home.html" class="active">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="user/about.html">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="user/index.html" class="btn-get-started">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- Left text -->
+  <div class="hero-left">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+        <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+      </svg>
+      Smart . Fast . Secure
+    </div>
+    <h1 class="hero-title">PHISHING <em>DETECTION</em><br>SYSTEM</h1>
+    <p class="hero-sub">
+      Detect phishing website and suspicious URLs instantly.<br>
+      Stay safe while browsing the internet.
+    </p>
+    <div class="hero-btns">
+      <a href="user/checker.html" class="btn-scan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M9 12l2 2 4-4" stroke-width="2.2"/>
+        </svg>
+        Start Scanning
+      </a>
+      <a href="#features" class="btn-learn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M10.5 8.5l5 3.5-5 3.5V8.5z"/>
+        </svg>
+        Learn More
+      </a>
+    </div>
+  </div>
+
+  <!-- Right — hero visual -->
+  <div class="hero-right">
+    <div class="hero-visual-wrap">
+
+      <div class="hv-backdrop"></div>
+
+      <!-- Rings -->
+      <div class="hv-ring r1"></div>
+      <div class="hv-ring r2"></div>
+      <div class="hv-ring r3"></div>
+
+      <!-- Platform grid + glow -->
+      <div class="hv-platform"></div>
+      <div class="hv-ground-glow"></div>
+      <div class="hv-ambient"></div>
+
+      <!-- URL floating card -->
+      <div class="hv-url-card">
+        <div class="uc-url">https://safe-website.com</div>
+        <div class="uc-status"><span class="uc-dot"></span>Status: Safe</div>
+      </div>
+
+      <!-- Globe top right -->
+      <div class="hv-globe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/>
+        </svg>
+      </div>
+
+      <!-- Central shield -->
+      <div class="hv-shield">
+        <svg viewBox="0 0 100 110" fill="none">
+          <defs>
+            <radialGradient id="sg" cx="40%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#22ff7a" stop-opacity="0.8"/>
+              <stop offset="40%" stop-color="#10d060" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#041a0c" stop-opacity="0.9"/>
+            </radialGradient>
+            <filter id="glow-f">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Shield outline glow -->
+          <path d="M50 5 L88 20 L88 52 C88 76 70 92 50 100 C30 92 12 76 12 52 L12 20 Z"
+            fill="url(#sg)"
+            stroke="#22ff7a"
+            stroke-width="1.5"
+            filter="url(#glow-f)"
+            opacity="0.95"/>
+          <!-- Inner shield highlight -->
+          <path d="M50 13 L82 26 L82 52 C82 72 66 87 50 94 C34 87 18 72 18 52 L18 26 Z"
+            fill="none"
+            stroke="rgba(34,255,122,0.35)"
+            stroke-width="1"/>
+          <!-- Checkmark -->
+          <path d="M33 52 L44 63 L67 40"
+            stroke="#22ff7a"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            filter="url(#glow-f)"/>
+        </svg>
+      </div>
+
+      <!-- Padlock left -->
+      <div class="hv-padlock">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#22ff7a" stroke-width="1.5">
+          <rect x="5" y="11" width="14" height="10" rx="2" fill="rgba(34,255,100,0.1)" stroke="#22ff7a"/>
+          <path d="M8 11V7a4 4 0 018 0v4"/>
+          <circle cx="12" cy="16" r="1.5" fill="#22ff7a"/>
+        </svg>
+      </div>
+
+      <!-- Risk score card -->
+      <div class="hv-risk-card">
+        <div class="rc-label">Risk Score</div>
+        <div class="rc-score">10<sub>/100</sub></div>
+        <div class="rc-bar"><div class="rc-bar-fill"></div></div>
+        <div class="rc-low">Very Low Risk</div>
+      </div>
+
+      <!-- Dot particles -->
+      <span class="hv-dot d1"></span>
+      <span class="hv-dot d2"></span>
+      <span class="hv-dot d3"></span>
+      <span class="hv-dot d4"></span>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- FEATURE CARDS -->
+<section class="features" id="features">
+
+  <div class="ftr-card">
+    <div class="ftr-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="M20 20l-4.8-4.8"/>
+      </svg>
+    </div>
+    <h3>URL Scanning</h3>
+    <p>scan any URL to check<br>for phishing threats.</p>
+  </div>
+
+  <div class="ftr-card">
+    <div class="ftr-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="8.5"/>
+        <circle cx="12" cy="12" r="4.5" stroke-width="1.4" stroke-dasharray="3 2"/>
+        <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <h3>Risk Score</h3>
+    <p>Get accurate risk scores<br>for scanned URLs.</p>
+  </div>
+
+  <div class="ftr-card">
+    <div class="ftr-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 3.5h7l3 3V20a.6.6 0 01-.6.6H7.6A.6.6 0 017 20V3.5z"/>
+        <path d="M9.5 11.5h5M9.5 14.5h5M9.5 8.5h3"/>
+      </svg>
+    </div>
+    <h3>Detailed Reports</h3>
+    <p>View detailed analysis<br>and explanations.</p>
+  </div>
+
+  <div class="ftr-card">
+    <div class="ftr-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
+        <path d="M9 12l2 2 4-4" stroke-width="2"/>
+      </svg>
+    </div>
+    <h3>Stay Protected</h3>
+    <p>Protect yourself from online<br>threats and fraud.</p>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="home-footer" id="contact">
+  © 2024 <em>WebGuard</em>. All rights reserved.
+</footer>
+
+<script src="js/home.js"></script>
+</body>
+</html>
