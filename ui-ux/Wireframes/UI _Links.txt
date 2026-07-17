@@ -1,2 +1,0 @@
-Dashboard UI
-https://www.figma.com/design/MbTIymm8oIgCyzW7BJFNBJ/Phishing-Detection-System-Design?node-id=59-53&t=F8WRzaLIqfjeEwnL-1
