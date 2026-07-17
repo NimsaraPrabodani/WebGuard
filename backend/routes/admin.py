@@ -36,7 +36,7 @@ def login_admin():
         return jsonify({
             "message" : "Login Success",
             "admin":{
-                "name " : admin["name"],
+                "name" : admin["name"],
                 "email":admin["email"]
             }
         }),200
@@ -46,3 +46,7 @@ def login_admin():
         return jsonify({
             "message" : "Wrong Password"
         }),401
+    
+@admin_bp.route("/test", methods=["GET"])
+def test():
+    return "Admin route is working"
