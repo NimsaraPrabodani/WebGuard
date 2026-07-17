@@ -1,34 +1,27 @@
 {
   "manifest_version": 3,
-
-  "name": "PhishingDetSys",
-
+  "name": "WebGuard - Phishing Detection System",
   "version": "1.0",
 
-  "description": "Phishing Detection Browser Extension",
+    "icons": {
+    
+    "128": "icon/icon128.png"
+  },
+
+  "description": "Checks the current website for phishing indicators.",
 
   "permissions": [
     "tabs",
-    "activeTab",
     "storage"
   ],
 
   "host_permissions": [
-    "http://127.0.0.1:5000/*"
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5000/*",
+    "http://172.17.53.117:5000/*"
   ],
 
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "18": "icons/icon18.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
-
-  "icons": {
-    "18": "icons/icon18.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "default_popup": "popup.html"
   }
 }
