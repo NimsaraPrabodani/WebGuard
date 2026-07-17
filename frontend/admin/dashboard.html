@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebGuard — Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <div class="brand-text"><strong>WebGuard</strong><span>Phishing Detection System</span></div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="dashboard.html" class="nav-item active" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/></svg>
+        Dashboard
+      </a>
+      <a href="reports.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3.5h7l3 3V20a.6.6 0 01-.6.6H7.6A.6.6 0 017 20V3.5z"/><path d="M9.5 11h5M9.5 14.5h5"/></svg>
+        Reports
+      </a>
+      <a href="statistics.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 20V11M12 20V5M19 20v-7"/></svg>
+        Statistics
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a1.7 1.7 0 000-3l1-1.6-1.7-1.7-1.6 1a1.7 1.7 0 00-3 0l-.2-1.9h-2.4L11.3 7a1.7 1.7 0 00-3 0l-1.6-1L5 7.7l1 1.6a1.7 1.7 0 000 3l-1 1.6 1.7 1.7 1.6-1a1.7 1.7 0 003 0l.2 1.9h2.4l.2-1.9a1.7 1.7 0 003 0l1.6 1 1.7-1.7-1-1.6z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="status-card">
+      <span class="shield-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <strong>Detection Engine Active</strong>
+      <p>Monitoring all scan activity across the system in real time.</p>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="topbar">
+      <button id="menuToggle" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <h1>Admin Dashboard</h1>
+      <div class="topbar-right">
+        <div class="role-toggle">
+          <a href="../user/index.html">User</a>
+          <a href="dashboard.html" class="active">Admin</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <div class="welcome">
+        <h2>Welcome back, <em>Admin!</em></h2>
+        <p>Here's what's happening across the system today.</p>
+      </div>
+
+      <!-- Stat cards (system-wide) -->
+      <div class="stat-grid">
+        <div class="stat-card total">
+          <div class="stat-top">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg></span>
+            <span class="stat-label">Total Scans</span>
+          </div>
+          <span class="stat-value" data-count="4386">0</span>
+          <span class="stat-delta"><b>+12%</b> this week</span>
+        </div>
+
+        <div class="stat-card safe">
+          <div class="stat-top">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5l4 4 10-10"/></svg></span>
+            <span class="stat-label">Safe</span>
+          </div>
+          <span class="stat-value" data-count="3289">0</span>
+          <span class="stat-delta"><b>75%</b> of total</span>
+        </div>
+
+        <div class="stat-card suspicious">
+          <div class="stat-top">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>
+            <span class="stat-label">Suspicious</span>
+          </div>
+          <span class="stat-value" data-count="789">0</span>
+          <span class="stat-delta"><b>18%</b> of total</span>
+        </div>
+
+        <div class="stat-card dangerous">
+          <div class="stat-top">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg></span>
+            <span class="stat-label">Dangerous</span>
+          </div>
+          <span class="stat-value" data-count="308">0</span>
+          <span class="stat-delta"><b>7%</b> of total</span>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Main column -->
+        <div class="col-main">
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>
+                Run a Manual Scan
+              </h3>
+            </div>
+            <p class="desc">Test the detection engine on any URL — useful for verifying flagged reports.</p>
+            <div class="lookup-row">
+              <input type="text" id="lookupInput" placeholder="Paste URL here.........." aria-label="URL to scan">
+              <button class="btn-primary" id="scanBtn">Scan Now</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Recent Scans — All Users</h3>
+              <a href="#">View All</a>
+            </div>
+            <table class="scan-table">
+              <thead>
+                <tr><th>URL</th><th>Scanned By</th><th>Result</th><th>Risk Score</th><th>Scanned At</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>example.com</div></td>
+                  <td class="user-cell">alice.k</td>
+                  <td><span class="badge safe">Safe</span></td>
+                  <td class="mono">10/100</td>
+                  <td class="mono">2 min ago</td>
+                  <td><a href="#" class="row-link">···</a></td>
+                </tr>
+                <tr>
+                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>secure-login.net</div></td>
+                  <td class="user-cell">john.d</td>
+                  <td><span class="badge suspicious">Suspicious</span></td>
+                  <td class="mono">45/100</td>
+                  <td class="mono">15 min ago</td>
+                  <td><a href="#" class="row-link">···</a></td>
+                </tr>
+                <tr>
+                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>free-money.win</div></td>
+                  <td class="user-cell">sara.w</td>
+                  <td><span class="badge dangerous">Dangerous</span></td>
+                  <td class="mono">85/100</td>
+                  <td class="mono">1 hour ago</td>
+                  <td><a href="#" class="row-link">···</a></td>
+                </tr>
+                <tr>
+                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>official-site.org</div></td>
+                  <td class="user-cell">mike.t</td>
+                  <td><span class="badge safe">Safe</span></td>
+                  <td class="mono">15/100</td>
+                  <td class="mono">3 hours ago</td>
+                  <td><a href="#" class="row-link">···</a></td>
+                </tr>
+                <tr>
+                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>click-here.co</div></td>
+                  <td class="user-cell">emma.l</td>
+                  <td><span class="badge dangerous">Dangerous</span></td>
+                  <td class="mono">90/100</td>
+                  <td class="mono">5 hours ago</td>
+                  <td><a href="#" class="row-link">···</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- Side column -->
+        <div class="col-side">
+
+          <div class="panel">
+            <div class="panel-head"><h3>Scan Summary</h3></div>
+            <div class="summary-body">
+              <div class="donut-figure">
+                <svg viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="15.5" fill="none" stroke="var(--border)" stroke-width="4"></circle>
+                  <circle id="donutSafe" cx="18" cy="18" r="15.5" fill="none" stroke="var(--accent)" stroke-width="4" stroke-dasharray="0 100" stroke-linecap="round"></circle>
+                  <circle id="donutSuspicious" cx="18" cy="18" r="15.5" fill="none" stroke="var(--warn)" stroke-width="4" stroke-dasharray="0 100" stroke-linecap="round"></circle>
+                  <circle id="donutDangerous" cx="18" cy="18" r="15.5" fill="none" stroke="var(--danger)" stroke-width="4" stroke-dasharray="0 100" stroke-linecap="round"></circle>
+                </svg>
+              </div>
+              <ul class="legend">
+                <li><span class="sw" style="background:var(--accent)"></span>Safe (75%)</li>
+                <li><span class="sw" style="background:var(--warn)"></span>Suspicious (18%)</li>
+                <li><span class="sw" style="background:var(--danger)"></span>Dangerous (7%)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h3>Top Risky Categories</h3></div>
+            <ul class="risky-list">
+              <li>Suspicious Domain <span class="tag">312</span></li>
+              <li>Phishing Keywords <span class="tag">221</span></li>
+              <li>SSL Issues <span class="tag">164</span></li>
+              <li>Blacklisted <span class="tag">92</span></li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><h3>System Health</h3></div>
+            <div class="health-grid">
+              <div class="health-item"><span>Scans today</span><strong>312</strong></div>
+              <div class="health-item"><span>Uptime</span><strong>99.98%</strong></div>
+              <div class="health-item full"><span>Engine version</span><strong>v2.4.1</strong></div>
+            </div>
+          </div>
+
+          <div class="panel reports-panel">
+            <div class="panel-head">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+                Manage Reports
+              </h3>
+            </div>
+            <div class="reports-count">7</div>
+            <p class="desc">Scan results users have flagged as incorrect, awaiting review.</p>
+            <a href="reports.html" class="btn-ghost" style="display:inline-block;">Review reports →</a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="app-footer">WebGuard Admin · Independent Study Project, Group 05</footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+/* =========================================================
+   hero-visual.css — The 3D-style shield hero illustration
+   Import this in home.css or add a <link> to home.html
+   ========================================================= */
+
+.hero-visual-wrap{
+  position:relative;
+  width:500px;height:500px;
+  display:flex;align-items:center;justify-content:center;
+  flex:none;
+}
+
+/* ── Dark radial backdrop ── */
+.hv-backdrop{
+  position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 50% 60%,
+    rgba(0,40,20,0.95) 0%,
+    rgba(0,20,10,0.85) 40%,
+    rgba(4,10,20,0.6) 70%,
+    transparent 100%);
+}
+
+/* ── Outer glow circles ── */
+.hv-ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(34,255,100,0.12);
+}
+.hv-ring.r1{width:460px;height:460px;}
+.hv-ring.r2{width:360px;height:360px;border-color:rgba(34,255,100,0.18);}
+.hv-ring.r3{width:260px;height:260px;border-color:rgba(34,255,100,0.22);}
+
+/* ── Grid floor platform ── */
+.hv-platform{
+  position:absolute;
+  bottom:30px;left:50%;transform:translateX(-50%);
+  width:360px;height:130px;
+}
+.hv-platform::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(34,255,100,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,255,100,0.18) 1px, transparent 1px);
+  background-size:36px 36px;
+  -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  mask-image:linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  transform:perspective(300px) rotateX(55deg);
+  transform-origin:bottom center;
+}
+
+/* ── Green glow under shield ── */
+.hv-ground-glow{
+  position:absolute;
+  bottom:60px;left:50%;transform:translateX(-50%);
+  width:260px;height:60px;
+  background:radial-gradient(ellipse, rgba(34,255,100,0.45) 0%, transparent 70%);
+  border-radius:50%;
+  filter:blur(8px);
+  animation:glow-pulse 3s ease-in-out infinite;
+}
+@keyframes glow-pulse{
+  0%,100%{opacity:0.7;transform:translateX(-50%) scaleX(1);}
+  50%{opacity:1;transform:translateX(-50%) scaleX(1.1);}
+}
+
+/* ── Ambient glow ball ── */
+.hv-ambient{
+  position:absolute;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(34,255,100,0.16) 0%,
+    rgba(34,255,100,0.06) 50%,
+    transparent 70%);
+  animation:ambient-pulse 4s ease-in-out infinite;
+}
+@keyframes ambient-pulse{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.12);opacity:0.75;}
+}
+
+/* ── Main shield ── */
+.hv-shield{
+  position:relative;z-index:10;
+  animation:shield-float 4.5s ease-in-out infinite;
+  filter:drop-shadow(0 0 30px rgba(34,255,100,0.6))
+         drop-shadow(0 0 60px rgba(34,255,100,0.3));
+}
+@keyframes shield-float{
+  0%,100%{transform:translateY(0px);}
+  50%{transform:translateY(-16px);}
+}
+
+.hv-shield svg{
+  width:210px;height:210px;
+}
+
+/* Shield SVG internal gradient handled inline */
+
+/* ── Padlock (left) ── */
+.hv-padlock{
+  position:absolute;
+  left:30px;bottom:120px;
+  z-index:8;
+  animation:float-slow 5s 0.8s ease-in-out infinite;
+  filter:drop-shadow(0 0 10px rgba(34,255,100,0.4));
+}
+.hv-padlock svg{width:52px;height:52px;}
+
+/* ── Globe icon (top right) ── */
+.hv-globe{
+  position:absolute;
+  top:60px;right:50px;
+  z-index:8;
+  width:56px;height:56px;
+  border-radius:50%;
+  background:rgba(34,255,100,0.08);
+  border:1.5px solid rgba(34,255,100,0.35);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(34,255,100,0.8);
+  animation:float-slow 4.5s 0.3s ease-in-out infinite;
+  box-shadow:0 0 18px -4px rgba(34,255,100,0.4);
+}
+.hv-globe svg{width:28px;height:28px;}
+
+/* ── URL floating card ── */
+.hv-url-card{
+  position:absolute;
+  top:90px;left:20px;
+  z-index:9;
+  background:rgba(8,18,32,0.92);
+  border:1px solid rgba(34,255,100,0.4);
+  border-radius:10px;
+  padding:10px 14px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 24px -8px rgba(34,255,100,0.5);
+  animation:float-slow 5s 1.2s ease-in-out infinite;
+  min-width:170px;
+}
+.hv-url-card .uc-url{
+  font-family:monospace;font-size:11px;
+  color:rgba(200,220,210,0.85);margin-bottom:4px;
+}
+.hv-url-card .uc-status{
+  color:#22ff7a;font-size:12px;font-weight:700;
+  display:flex;align-items:center;gap:5px;
+}
+.uc-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#22ff7a;
+  box-shadow:0 0 6px #22ff7a;
+}
+
+/* ── Risk score card ── */
+.hv-risk-card{
+  position:absolute;
+  bottom:100px;right:18px;
+  z-index:9;
+  background:rgba(8,18,32,0.92);
+  border:1px solid rgba(34,255,100,0.4);
+  border-radius:10px;
+  padding:12px 16px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 24px -8px rgba(34,255,100,0.5);
+  animation:float-slow 4.8s 0.6s ease-in-out infinite;
+}
+.hv-risk-card .rc-label{
+  font-size:10px;color:rgba(180,200,190,0.7);margin-bottom:2px;
+}
+.hv-risk-card .rc-score{
+  font-family:monospace;font-size:22px;font-weight:700;
+  color:#eef2f8;line-height:1;
+}
+.hv-risk-card .rc-score sub{font-size:13px;color:rgba(180,200,190,0.6);}
+.hv-risk-card .rc-bar{
+  margin-top:5px;
+  height:4px;width:80px;
+  background:rgba(255,255,255,0.1);
+  border-radius:2px;
+  overflow:hidden;
+}
+.hv-risk-card .rc-bar-fill{
+  height:100%;width:12%;
+  background:linear-gradient(90deg,#22ff7a,#10c95f);
+  border-radius:2px;
+}
+.hv-risk-card .rc-low{
+  font-size:10px;color:#22ff7a;font-weight:600;margin-top:3px;
+}
+
+/* Shared float animation */
+@keyframes float-slow{
+  0%,100%{transform:translateY(0px);}
+  50%{transform:translateY(-8px);}
+}
+
+/* Dot particles */
+.hv-dot{
+  position:absolute;border-radius:50%;
+  background:#22ff7a;
+}
+.hv-dot.d1{width:5px;height:5px;top:130px;right:90px;opacity:0.5;animation:blink-dot 2.4s 0.2s infinite;}
+.hv-dot.d2{width:4px;height:4px;bottom:150px;left:60px;opacity:0.4;animation:blink-dot 3s 0.8s infinite;}
+.hv-dot.d3{width:6px;height:6px;top:210px;left:38px;opacity:0.3;animation:blink-dot 2.8s 1.5s infinite;}
+.hv-dot.d4{width:3px;height:3px;top:80px;right:120px;opacity:0.6;animation:blink-dot 2s 0.5s infinite;}
+@keyframes blink-dot{
+  0%,100%{opacity:0.15;}
+  50%{opacity:0.75;}
+}
