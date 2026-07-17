@@ -4,7 +4,7 @@ from routes.history import history_bp
 from routes.stats import stats_bp
 from flask_cors import CORS
 
-from routes.admin import admin_bp
+#from routes.admin import admin_bp
 
 app = Flask(__name__)
 
@@ -15,10 +15,10 @@ app.register_blueprint(stats_bp)
 CORS(app)
 
 
-app.register_blueprint(
-    admin_bp,
-    url_prefix="/admin"
-)
+#app.register_blueprint(
+    #admin_bp,
+    #url_prefix="/admin"
+#)
 
 
 @app.route("/")
