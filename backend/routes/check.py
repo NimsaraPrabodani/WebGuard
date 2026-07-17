@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from utils.detector import analyze_url
-from database.mongo import collection
+from database.mongo import url_collection
 from datetime import datetime
 
 check_bp = Blueprint("check_bp", __name__)
@@ -24,12 +24,13 @@ def check():
             "reasons": reasons,
             "date": str(datetime.now())
         }
-
-        collection.update_one(
-            {"url": url},
-            {"$set": record},
-            upsert=True
+        
+        url_collection.update_one(
+         {"url": url},
+        {"$set": record},
+        upsert=True
         )
+       
 
 
         

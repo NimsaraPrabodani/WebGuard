@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify
-from database.mongo import collection
+from database.mongo import url_collection
 
 stats_bp = Blueprint("stats_bp", __name__)
 
 @stats_bp.route("/stats", methods=["GET"])
 def stats():
-    data =  collection.find()
+    data =  url_collection.find()
 
     safe = 0
     suspicious = 0
