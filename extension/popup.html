@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>WebGuard</title>
-<link rel="stylesheet" href="popup.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <!-- SCREEN 1: URL + Check button -->
+    <!-- SCREEN 1 (only screen in this popup): URL + Check button -->
     <div class="screen" id="checkScreen">
 
       <div class="url-row">
@@ -32,20 +32,7 @@
         <span class="url-text" id="urlText">Loading current tab…</span>
       </div>
 
-      <button class="btn" id="checkBtn">Check Website</button>
-
-    </div>
-
-    <!-- SCREEN 2: Result box + View Score button -->
-    <div class="screen hidden" id="resultScreen">
-
-      <div class="result-box" id="resultBox">
-        <div class="spinner" id="spinner"></div>
-      </div>
-
-      <button class="btn" id="viewScoreBtn">View Score</button>
-
-      <div class="details hidden" id="details"></div>
+      <button class="btn" id="checkBtn" disabled>Check Website</button>
 
     </div>
 
