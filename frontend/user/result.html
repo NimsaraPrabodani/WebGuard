@@ -26,7 +26,6 @@
     </div>
 
     <nav class="nav" aria-label="Primary">
-      
       <a href="checker.html" class="nav-item active" aria-current="page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></svg>
         Scan URL
@@ -62,7 +61,7 @@
       <h1>Scan Result</h1>
       <div class="topbar-right">
         <div class="role-toggle">
-          <a href="index.html">User</a>
+          <a href="checker.html">User</a>
           <a href="../admin/dashboard.html">Admin</a>
         </div>
       </div>
@@ -257,42 +256,7 @@
 </div>
 
 <script src="../js/main.js"></script>
-<script>
-const data = JSON.parse(localStorage.getItem('scanResult'));
-
-if (data) {
-  // Scanned URL
-  document.getElementById('scannedUrl').textContent = data.url;
-
-  // Risk score
-  document.querySelector('.risk-score-num').innerHTML = data.score + '<sub>/100</sub>';
-  document.querySelector('.risk-bar-fill').style.width = data.score + '%';
-
-  // Detection result label
-  const label = document.querySelector('.detection-label strong');
-  label.textContent = data.status;
-
-  // Color based on status
-  if (data.status === 'Safe') {
-    label.style.color = 'var(--accent)';
-    document.querySelector('.risk-level').style.color = 'var(--accent)';
-  } else if (data.status === 'Suspicious') {
-    label.style.color = 'var(--warn)';
-    document.querySelector('.risk-level').style.color = 'var(--warn)';
-  } else {
-    label.style.color = 'var(--danger)';
-    document.querySelector('.risk-level').style.color = 'var(--danger)';
-  }
-
-  // Risk level text
-  if (data.score >= 70) {
-    document.querySelector('.risk-level').textContent = 'High Risk';
-  } else if (data.score >= 40) {
-    document.querySelector('.risk-level').textContent = 'Medium Risk';
-  } else {
-    document.querySelector('.risk-level').textContent = 'Low Risk';
-  }
-}
-</script>
+<script src="../js/api.js"></script>
+<script src="../js/result.js"></script>
 </body>
 </html>

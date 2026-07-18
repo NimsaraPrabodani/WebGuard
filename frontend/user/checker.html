@@ -62,7 +62,7 @@
       <div class="topbar-right">
         <div class="role-toggle">
           <a href="index.html">User</a>
-          <a href="../admin/dashboard.html">Admin</a>
+          <a href="../admin/login.html">Admin</a>
         </div>
       </div>
     </header>
@@ -256,29 +256,9 @@
 </div>
 
 <script src="../js/main.js"></script>
-<script>
-document.getElementById('scanBtn').addEventListener('click', async () => {
-  const url = document.getElementById('urlInput').value.trim();
-  if (!url) {
-    alert("Please enter URL");
-    return;
-  }
-  try {
-    const response = await fetch("http://localhost:5000/check-url", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: url })
-    });
-    if (!response.ok) throw new Error("Server error");
-    const data = await response.json();
-    localStorage.setItem('scanResult', JSON.stringify(data));
-    window.location.href = 'result.html';
-  } catch(error) {
-    console.error(error);
-    alert("Cannot connect to backend");
-  }
-});
-</script>
+<script src="../js/api.js"></script>
+<script src="../js/checker.js"></script>
+
 
 </body>
 </html>
