@@ -26,10 +26,7 @@
     </div>
 
     <nav class="nav" aria-label="Primary">
-      <a href="index.html" class="nav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/></svg>
-        Dashboard
-      </a>
+      
       <a href="checker.html" class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></svg>
         Scan URL
@@ -80,6 +77,53 @@
 
         <!-- Main column -->
         <div class="history-main">
+
+          <!-- Stat cards -->
+          <div class="stat-grid">
+            <div class="stat-card total">
+              <div class="stat-top">
+                <span class="stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg>
+                </span>
+                <span class="stat-label">Total Scans</span>
+              </div>
+              <span class="stat-value">128</span>
+              <span class="stat-delta"><b>+12%</b> this week</span>
+            </div>
+
+            <div class="stat-card safe">
+              <div class="stat-top">
+                <span class="stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5l4 4 10-10"/></svg>
+                </span>
+                <span class="stat-label">Safe</span>
+              </div>
+              <span class="stat-value">96</span>
+              <span class="stat-delta"><b>75%</b> of total</span>
+            </div>
+
+            <div class="stat-card suspicious">
+              <div class="stat-top">
+                <span class="stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+                </span>
+                <span class="stat-label">Suspicious</span>
+              </div>
+              <span class="stat-value">24</span>
+              <span class="stat-delta"><b>18%</b> of total</span>
+            </div>
+
+            <div class="stat-card dangerous">
+              <div class="stat-top">
+                <span class="stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+                </span>
+                <span class="stat-label">Dangerous</span>
+              </div>
+              <span class="stat-value">8</span>
+              <span class="stat-delta"><b>7%</b> of total</span>
+            </div>
+          </div>
 
           <!-- Search + Filter -->
           <div class="search-panel">
@@ -178,9 +222,7 @@
           <!-- Statistics -->
           <div class="side-panel">
             <div class="side-panel-head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M5 20V11M12 20V5M19 20v-7"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20V11M12 20V5M19 20v-7"/></svg>
               <h4>Statistics</h4>
             </div>
             <div class="stat-rows">
@@ -203,21 +245,13 @@
           <!-- Quick Actions -->
           <div class="side-panel">
             <div class="side-panel-head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               <h4>Quick Actions</h4>
             </div>
             <div class="quick-actions">
-              <button class="qa-primary" onclick="window.location.href='checker.html'">
-                + Scan New URL
-              </button>
+              <button class="qa-primary" onclick="window.location.href='checker.html'">+ Scan New URL</button>
               <button class="qa-secondary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                  <polyline points="17 8 12 3 7 8"/>
-                  <line x1="12" y1="3" x2="12" y2="15"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                 Upload URL s (Bulk)
               </button>
             </div>
@@ -226,10 +260,7 @@
           <!-- Tips -->
           <div class="side-panel">
             <div class="side-panel-head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
               <h4>Tips</h4>
             </div>
             <p class="tips-intro">Regularly check your scan history.</p>
@@ -251,7 +282,6 @@
 
 <script src="../js/main.js"></script>
 <script>
-  // Filter buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -259,16 +289,11 @@
       const filter = btn.dataset.filter;
       document.querySelectorAll('#historyBody tr').forEach(row => {
         const badge = row.querySelector('.badge');
-        if(filter === 'all' || badge?.classList.contains(filter)){
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
+        row.style.display = (filter === 'all' || badge?.classList.contains(filter)) ? '' : 'none';
       });
     });
   });
 
-  // Search
   document.getElementById('searchInput').addEventListener('input', function(){
     const q = this.value.toLowerCase();
     document.querySelectorAll('#historyBody tr').forEach(row => {
@@ -277,14 +302,10 @@
     });
   });
 
-  // View buttons → go to result page
   document.querySelectorAll('.view-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.location.href = 'result.html';
-    });
+    btn.addEventListener('click', () => { window.location.href = 'result.html'; });
   });
 
-  // Pagination buttons
   document.querySelectorAll('.page-btn:not(.arrow)').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
