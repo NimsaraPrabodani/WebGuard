@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WebGuard — Result</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app">
+    <h1 style="color:white">RESULT PAGE LOADED</h1>
+
+    <div class="header">
+      <svg class="shield" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L4 5V11C4 16.5 7.4 21.2 12 22C16.6 21.2 20 16.5 20 11V5L12 2Z" fill="#22c55e"/>
+        <path d="M9.5 12L11 13.5L14.5 10" stroke="#0b0e14" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="header-text">
+        <h1>WebGuard</h1>
+        <p>Phishing Detection System</p>
+      </div>
+    </div>
+
+    <!-- SCREEN 2 (only screen in this popup): Result box + View Score button -->
+    <div class="screen" id="resultScreen">
+
+      <div class="result-box" id="resultBox">
+        <div class="spinner" id="spinner"></div>
+      </div>
+
+      <button class="btn" id="viewScoreBtn" disabled>View Score</button>
+
+      <div class="details hidden" id="details"></div>
+
+      <button class="btn secondary" id="recheckBtn">Check Again</button>
+
+    </div>
+
+  </div>
+
+  <script src="result.js"></script>
+</body>
+</html>
