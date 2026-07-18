@@ -8,11 +8,13 @@ from routes.admin import admin_bp
 
 app = Flask(__name__)
 
+CORS(app)
+
 app.register_blueprint(check_bp)
 app.register_blueprint(history_bp)
 app.register_blueprint(stats_bp)
 
-CORS(app)
+
 
 
 app.register_blueprint(
