@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "WebGuard - Phishing Detection System",
+  "version": "1.0",
+
+    "icons": {
+    
+    "128": "icon/icon128.png"
+  },
+
+  "description": "Checks the current website for phishing indicators.",
+
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5000/*",
+    "http://172.17.53.117:5000/*"
+  ],
+
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

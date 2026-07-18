@@ -1,0 +1,150 @@
+:root {
+  --bg: #0b0e14;
+  --green: #22c55e;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --red: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.app {
+  width: 340px;
+  background: var(--bg);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.header {
+  width: 100%;
+  background: linear-gradient(180deg, #131826 0%, #0f1420 100%);
+  border: 1px solid #1e2532;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.08);
+}
+
+.shield {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.6));
+}
+
+.header-text h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.header-text p {
+  margin: 3px 0 0;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.url-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #10141c;
+  border: 1px solid #1e2532;
+  border-radius: 10px;
+  padding: 11px 13px;
+}
+
+.globe {
+  width: 18px;
+  height: 18px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.url-text {
+  font-size: 13.5px;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.check-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--green);
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+}
+
+.check-btn:hover {
+  background: rgba(34, 197, 94, 0.16);
+}
+
+.check-btn:active {
+  transform: scale(0.98);
+}
+
+.check-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+.result {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 24px;
+}
+
+.result.hidden {
+  display: none;
+}
+
+.result.danger {
+  color: var(--red);
+}
+
+.result.safe {
+  color: var(--green);
+}
+
+.result.checking {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.checked-url {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--muted);
+  word-break: break-all;
+  display: block;
+  margin-top: 6px;
+}
