@@ -26,10 +26,6 @@
     </div>
 
     <nav class="nav" aria-label="Primary">
-      <a href="index.html" class="nav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/></svg>
-        Dashboard
-      </a>
       <a href="checker.html" class="nav-item active" aria-current="page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>
         Scan URL
@@ -104,60 +100,88 @@
             </div>
           </div>
 
-          <!-- Recent scans -->
-          <div class="recent-panel">
-            <div class="recent-head">
-              <h3>Recent Scans</h3>
-              <a href="history.html">View All</a>
+          <!-- Info cards -->
+          <div class="info-grid">
+
+            <div class="info-card card-search">
+              <div class="info-card-head">
+                <span class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.5-4.5"/></svg>
+                </span>
+                <h4>Tips for Identifying<br>Phishing Websites</h4>
+              </div>
+              <ul class="info-list">
+                <li>Check the URL carefully for spelling mistakes.</li>
+                <li>Ensure the website uses <strong>HTTPS</strong> and has a valid certificate.</li>
+                <li>Look for poor design, broken links or grammar errors.</li>
+                <li>Verify the domain name before entering any information.</li>
+                <li>Be cautious of websites asking for sensitive information.</li>
+                <li>Hover over links to see the real destination.</li>
+                <li>Check for contact info and privacy policies.</li>
+              </ul>
+              <div class="url-preview">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/></svg>
+                <span>https://www.example.com</span>
+                <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
             </div>
-            <table class="rscan-table">
-              <thead>
-                <tr>
-                  <th>URL</th>
-                  <th>Result</th>
-                  <th>Risk Score</th>
-                  <th>Scanned At</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>example.com</div></td>
-                  <td><span class="badge safe">Safe</span></td>
-                  <td class="mono">10/100</td>
-                  <td class="mono">2 min ago</td>
-                  <td><span class="row-more">···</span></td>
-                </tr>
-                <tr>
-                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>secure-login.net</div></td>
-                  <td><span class="badge suspicious">Suspicious</span></td>
-                  <td class="mono">45/100</td>
-                  <td class="mono">15 min ago</td>
-                  <td><span class="row-more">···</span></td>
-                </tr>
-                <tr>
-                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>free-money.win</div></td>
-                  <td><span class="badge dangerous">Dangerous</span></td>
-                  <td class="mono">85/100</td>
-                  <td class="mono">1 hour ago</td>
-                  <td><span class="row-more">···</span></td>
-                </tr>
-                <tr>
-                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>official-site.org</div></td>
-                  <td><span class="badge safe">Safe</span></td>
-                  <td class="mono">15/100</td>
-                  <td class="mono">3 hours sgo</td>
-                  <td><span class="row-more">···</span></td>
-                </tr>
-                <tr>
-                  <td><div class="url-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg>click-here.co</div></td>
-                  <td><span class="badge dangerous">Dangerous</span></td>
-                  <td class="mono">90/100</td>
-                  <td class="mono">5 hours ago</td>
-                  <td><span class="row-more">···</span></td>
-                </tr>
-              </tbody>
-            </table>
+
+            <div class="info-card card-alert">
+              <div class="info-card-head">
+                <span class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 16H3l9-16z"/><path d="M12 9v4M12 16h.01" stroke-width="2"/></svg>
+                </span>
+                <h4>Common Phishing<br>Techniques</h4>
+              </div>
+              <ul class="info-list">
+                <li>Fake login pages that imitate trusted websites.</li>
+                <li>Emails or messages containing malicious links.</li>
+                <li>Urgent security alerts asking you to verify your account.</li>
+                <li>Fake banking or payment requests.</li>
+                <li>Prize, lottery, or gift card scams.</li>
+                <li>Social media impersonation attacks.</li>
+                <li>QR code phishing (Quishing).</li>
+                <li>Pop-up messages claiming your device is infected.</li>
+              </ul>
+            </div>
+
+            <div class="info-card card-shield">
+              <div class="info-card-head">
+                <span class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/></svg>
+                </span>
+                <h4>Safe Browsing<br>Guidelines</h4>
+              </div>
+              <ul class="info-list">
+                <li>Keep your browser and operating system updated.</li>
+                <li>Use strong, unique passwords for every account.</li>
+                <li>Enable Two-Factor Authentication (2FA).</li>
+                <li>Avoid clicking suspicious links or downloading unknown files.</li>
+                <li>Use trusted antivirus and security software.</li>
+                <li>Only download software from official websites.</li>
+                <li>Regularly clear browser cache and cookies.</li>
+              </ul>
+            </div>
+
+            <div class="info-card card-lock">
+              <div class="info-card-head">
+                <span class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                </span>
+                <h4>What to Do Before<br>Entering Passwords</h4>
+              </div>
+              <ul class="info-list">
+                <li>Confirm the website address is correct.</li>
+                <li>Check for the HTTPS padlock icon.</li>
+                <li>Make sure the login page belongs to the official website.</li>
+                <li>Verify there are no spelling mistakes in the domain name.</li>
+                <li>Never enter passwords after clicking links from suspicious emails.</li>
+                <li>If unsure, manually type the website address into the browser.</li>
+                <li>Ensure the browser does not display security warnings.</li>
+                <li>Use a password manager to detect fake login pages.</li>
+              </ul>
+            </div>
+
           </div>
 
         </div>
@@ -233,11 +257,27 @@
 
 <script src="../js/main.js"></script>
 <script>
-  document.getElementById('scanBtn').addEventListener('click', () => {
-    const url = document.getElementById('urlInput').value.trim();
-    if (!url) return;
-    alert('Connect to backend: POST /api/scan with { url: "' + url + '" }');
-  });
+document.getElementById('scanBtn').addEventListener('click', async () => {
+  const url = document.getElementById('urlInput').value.trim();
+  if (!url) {
+    alert("Please enter URL");
+    return;
+  }
+  try {
+    const response = await fetch("http://localhost:5000/check-url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: url })
+    });
+    if (!response.ok) throw new Error("Server error");
+    const data = await response.json();
+    localStorage.setItem('scanResult', JSON.stringify(data));
+    window.location.href = 'result.html';
+  } catch(error) {
+    console.error(error);
+    alert("Cannot connect to backend");
+  }
+});
 </script>
 
 </body>
