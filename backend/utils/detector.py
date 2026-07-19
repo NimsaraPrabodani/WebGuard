@@ -42,7 +42,7 @@ def analyze_url(url):
 
     if score <= 15:
         status = "Safe"
-    elif score <=60:
+    elif score < 60:
         status = "Suspicious"
     else:
         status = "Dangerous"
