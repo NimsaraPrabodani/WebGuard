@@ -44,12 +44,13 @@
 
 /* Two column grid */
 .grid-2col{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
-.col-main, .col-side{display:flex;flex-direction:column;gap:18px;}
+.col-main, .col-side{display:flex;flex-direction:column;gap:18px;min-width:0;}
 
 /* Manual lookup tool */
-.lookup-row{display:flex;gap:10px;}
+.lookup-row{display:flex;gap:10px;flex-wrap:wrap;}
 .lookup-row input{
   flex:1;
+  min-width:200px;
   background:var(--surface-2);
   border:1px solid var(--border);
   border-radius:10px;
@@ -60,7 +61,17 @@
 }
 .lookup-row input::placeholder{color:var(--text-muted);}
 
-/* Recent scans table */
+/* Recent scans table — fixed layout + column widths so a long
+   scanned URL can't stretch the table (and the whole page)
+   wider than the viewport. */
+.scan-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+.scan-table th:nth-child(1),.scan-table td:nth-child(1){width:34%;}
+.scan-table th:nth-child(2),.scan-table td:nth-child(2){width:16%;}
+.scan-table th:nth-child(3),.scan-table td:nth-child(3){width:14%;}
+.scan-table th:nth-child(4),.scan-table td:nth-child(4){width:14%;}
+.scan-table th:nth-child(5),.scan-table td:nth-child(5){width:16%;}
+.scan-table th:nth-child(6),.scan-table td:nth-child(6){width:6%;}
+
 .scan-table th{
   text-align:left;font-size:11px;color:var(--text-muted);
   font-weight:600;padding:10px 8px;border-bottom:1px solid var(--border-soft);
@@ -70,9 +81,16 @@
   padding:12px 8px;font-size:13.5px;border-bottom:1px solid var(--border-soft);
 }
 .scan-table tr:last-child td{border-bottom:none;}
-.url-cell{display:flex;align-items:center;gap:10px;}
+
+/* Long URLs wrap onto multiple lines instead of stretching the row */
+.url-cell{
+  display:flex;align-items:center;gap:10px;
+  min-width:0;
+  word-break:break-all;
+  overflow-wrap:anywhere;
+}
 .url-cell svg{width:19px;height:19px;color:var(--text-muted);flex:none;}
-.user-cell{color:var(--text-muted);font-size:12.5px;}
+.user-cell{color:var(--text-muted);font-size:12.5px;word-break:break-word;}
 .row-link{color:var(--text-muted);font-weight:700;letter-spacing:1px;}
 .row-link:hover{color:var(--accent);}
 
@@ -106,5 +124,6 @@
 @media (max-width:640px){
   .stat-grid{grid-template-columns:1fr 1fr;}
   .lookup-row{flex-direction:column;}
+  .scan-table{table-layout:auto;}
   .scan-table{display:block;overflow-x:auto;}
 }

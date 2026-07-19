@@ -21,7 +21,10 @@ async function loadHistory() {
 
     tbody.innerHTML = '';
 
-    data.forEach(item => {
+    // Show only 5 most recent
+    const recent = data.slice(0, 5);
+
+    recent.forEach(item => {
       const statusClass = item.status.toLowerCase();
 
       const tr = document.createElement('tr');

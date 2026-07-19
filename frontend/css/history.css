@@ -16,7 +16,7 @@
   gap:22px;
   align-items:start;
 }
-.history-main{display:flex;flex-direction:column;gap:18px;}
+.history-main{display:flex;flex-direction:column;gap:18px;min-width:0;}
 .history-side{display:flex;flex-direction:column;gap:18px;}
 
 /* ── Stat cards (same as dashboard) ── */
@@ -103,7 +103,16 @@
   border-radius:var(--radius);
   overflow:hidden;
 }
-.htable{width:100%;border-collapse:collapse;}
+
+/* Fixed layout + column widths so long real URLs can't stretch
+   the table (and the whole page) wider than the viewport. */
+.htable{width:100%;border-collapse:collapse;table-layout:fixed;}
+.htable th:nth-child(1),.htable td:nth-child(1){width:34%;}
+.htable th:nth-child(2),.htable td:nth-child(2){width:14%;}
+.htable th:nth-child(3),.htable td:nth-child(3){width:14%;}
+.htable th:nth-child(4),.htable td:nth-child(4){width:20%;}
+.htable th:nth-child(5),.htable td:nth-child(5){width:18%;}
+
 .htable th{
   text-align:left;font-size:13px;font-weight:600;
   color:var(--text);padding:16px 18px;
@@ -118,9 +127,15 @@
 .htable tr:last-child td{border-bottom:none;}
 .htable tr:hover td{background:rgba(255,255,255,0.02);}
 
-.url-cell{display:flex;align-items:center;gap:10px;}
+/* Long URLs wrap onto multiple lines instead of stretching the row */
+.url-cell{
+  display:flex;align-items:center;gap:10px;
+  min-width:0;
+  word-break:break-all;
+  overflow-wrap:anywhere;
+}
 .url-cell svg{width:22px;height:22px;color:var(--text-muted);flex:none;}
-.mono{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);}
+.mono{font-family:var(--font-mono);font-size:13px;color:var(--text-muted);word-break:break-all;}
 
 .badge{
   display:inline-flex;align-items:center;
@@ -143,15 +158,16 @@
 }
 .view-btn:hover{border-color:var(--accent);color:var(--accent);}
 .row-more{color:var(--text-muted);letter-spacing:2px;cursor:pointer;font-size:13px;}
-.action-cell{display:flex;align-items:center;gap:10px;}
+.action-cell{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 
 /* ── Pagination ── */
 .pagination{
   display:flex;align-items:center;justify-content:space-between;
   padding:14px 18px;border-top:1px solid var(--border);
   font-size:13px;color:var(--text-muted);
+  flex-wrap:wrap;gap:10px;
 }
-.page-btns{display:flex;align-items:center;gap:6px;}
+.page-btns{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .page-btn{
   width:32px;height:32px;border-radius:50%;
   background:transparent;border:1px solid var(--border);
@@ -228,6 +244,7 @@
 }
 @media(max-width:640px){
   .stat-grid{grid-template-columns:1fr 1fr;}
+  .htable{table-layout:auto;}
   .htable{display:block;overflow-x:auto;}
   .page-title{font-size:26px;}
   .search-panel{flex-direction:column;align-items:stretch;}
