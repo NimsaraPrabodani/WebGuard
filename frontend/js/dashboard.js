@@ -29,10 +29,3 @@ function setSegment(id, percent, offsetPercent){
 setSegment('donutSafe', 75, 0);
 setSegment('donutSuspicious', 18, 75);
 setSegment('donutDangerous', 7, 93);
-
-// Manual scan demo (frontend only — wire to backend /api/scan endpoint)
-document.getElementById('scanBtn')?.addEventListener('click', () => {
-  const val = document.getElementById('lookupInput').value.trim();
-  if (!val) return;
-  alert('Connect this button to your backend endpoint, e.g. POST /api/scan with { url: "' + val + '" }');
-});
