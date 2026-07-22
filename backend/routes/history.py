@@ -11,8 +11,19 @@ def history():
         result = []
 
         for i in data:
-            result.append({
-                "url": i.get("url"),
+
+             url = i.get("url","")
+
+             if len(url) > 20:
+                masked_url = url[:15] + "********" + url[-10:]
+             else:
+                masked_url = url
+
+
+
+
+             result.append({
+                "url": masked_url,
                 "score": i.get("score"),
                 "status": i.get("status"),
                 "reasons": i.get("reasons", []),
