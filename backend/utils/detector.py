@@ -26,19 +26,19 @@ def analyze_url(url):
 
 
 
-    # 1. Check HTTPS
+    #  Check HTTPS
     if not url.startswith("https://"):
         score += 10
         reasons.append("URL is not using HTTPS")
 
 
-    # 2. Very long URL
+    # Very long URL
     if len(url) > 75:
         score += 15
         reasons.append("URL is very long")
 
 
-    # 3. IP address instead of domain
+    # 3 IP address instead of domain
     ip_pattern = r"^(?:\d{1,3}\.){3}\d{1,3}$"
 
     if re.search(ip_pattern, domain):
@@ -46,7 +46,7 @@ def analyze_url(url):
         reasons.append("IP address used instead of domain name")
 
 
-    # 4. Suspicious keywords
+    #  Suspicious keywords
     keywords = [
         "login",
         "signin",
@@ -79,7 +79,7 @@ def analyze_url(url):
 
 
 
-    # 5. Suspicious special characters
+    # Suspicious special characters
 
     special_characters = [
         "@",
@@ -117,7 +117,7 @@ def analyze_url(url):
 
 
 
-    # 6. Many subdomains
+    # Many subdomains
 
     dot_count = domain.count(".")
 
@@ -127,7 +127,7 @@ def analyze_url(url):
 
 
 
-    # 7. Suspicious hyphen usage
+    # Suspicious hyphen usage
 
     if domain.count("-") >= 2:
         score += 15
@@ -135,7 +135,7 @@ def analyze_url(url):
 
 
 
-    # 8. Suspicious TLD
+    # Suspicious TLD
 
     suspicious_tlds = [
         ".xyz",
@@ -157,7 +157,7 @@ def analyze_url(url):
 
 
 
-    # 9. Domain impersonation words
+    # Domain impersonation words
 
     brands = [
         "paypal",
@@ -189,7 +189,7 @@ def analyze_url(url):
 
 
 
-    # 10. Too many numbers
+    # Too many numbers
 
     number_count = sum(char.isdigit() for char in domain)
 
@@ -199,7 +199,7 @@ def analyze_url(url):
 
 
 
-    # 11. Long domain name
+    # Long domain name
 
     if len(domain) > 30:
         score += 10
@@ -207,7 +207,7 @@ def analyze_url(url):
 
 
 
-    # 12. Deep URL path
+    # Deep URL path
 
     if path.count("/") >= 4:
         score += 10
@@ -215,7 +215,7 @@ def analyze_url(url):
 
 
 
-    # 13. Many query parameters
+    # Many query parameters
 
     if query.count("&") >= 3:
         score += 10
