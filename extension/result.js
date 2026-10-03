@@ -2,16 +2,98 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultBox = document.getElementById('resultBox');
   const viewScoreBtn = document.getElementById('viewScoreBtn');
   const detailsEl = document.getElementById('details');
-  const recheckBtn = document.getElementById('recheckBtn');
+  const continueBtn =document.getElementById('continueBtn');
 
   let currentUrl = '';
   let lastAnalysis = null;
 
-  // Get the URL passed in from popup.js via the query string
-  const params = new URLSearchParams(window.location.search);
-  currentUrl = params.get('url') || '';
+  // ---------------------------------------------
+// CONTINUE TO WEBSITE
+// ---------------------------------------------
+if (continueBtn) {
+  continueBtn.addEventListener("click", async () => {
 
-  console.log("URL received:", currentUrl);
+    if (!currentUrl) {
+      console.error("No URL available.");
+      return;
+    }
+
+    try {
+
+      // Tell background.js to allow this URL once
+      await chrome.storage.local.set({
+        allowedUrl: currentUrl
+      });
+
+      console.log(
+        "User chose Continue:",
+        currentUrl
+      );
+
+      // Navigate to original website
+      window.location.href = currentUrl;
+
+    } catch (error) {
+
+      console.error(
+        "Could not continue to website:",
+        error
+      );
+
+    }
+  });
+}
+
+  // Get the URL passed in from popup.js via the query string
+  const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+currentUrl =
+  params.get("url") || "";
+
+const incomingStatus =
+  params.get("status");
+
+const incomingScore =
+  params.get("score");
+
+let incomingReasons = [];
+
+try {
+
+  incomingReasons =
+    JSON.parse(
+      params.get("reasons") || "[]"
+    );
+
+} catch (error) {
+
+  incomingReasons = [];
+
+}
+
+
+console.log(
+  "URL received:",
+  currentUrl
+);
+
+console.log(
+  "Status received:",
+  incomingStatus
+);
+
+console.log(
+  "Score received:",
+  incomingScore
+);
+
+console.log(
+  "Reasons received:",
+  incomingReasons
+);
 
   if (!currentUrl) {
     renderError("No URL provided.");
@@ -186,13 +268,133 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Re-run the check on the same URL
-  if (recheckBtn) {
-    recheckBtn.addEventListener('click', () => {
-      runCheck(currentUrl);
-    });
-  }
+// ---------------------------------------------
+// CONTINUE ANYWAY
+// ---------------------------------------------
 
-  // Kick off the check automatically as soon as this popup opens
+if (continueBtn) {
+
+  continueBtn.addEventListener(
+    "click",
+    async () => {
+
+      if (!currentUrl) {
+
+        console.error(
+          "No URL available."
+        );
+
+        return;
+
+      }
+
+
+      try {
+
+        // Tell background.js to allow this URL once
+        await chrome.storage.local.set({
+
+          allowedUrl: currentUrl
+
+        });
+
+
+        console.log(
+          "User chose Continue Anyway:",
+          currentUrl
+        );
+
+
+        // Navigate to original website
+        window.location.href =
+          currentUrl;
+
+
+      } catch (error) {
+
+        console.error(
+          "Could not continue to website:",
+          error
+        );
+
+      }
+
+    }
+  );
+
+}
+
+// Use the result already received from background.js
+if (
+  incomingStatus &&
+  incomingScore !== null
+) {
+
+  const analysis = {
+
+    url: currentUrl,
+
+    host: (() => {
+      try {
+        return new URL(currentUrl).hostname;
+      } catch {
+        return currentUrl;
+      }
+    })(),
+
+    score: Number(incomingScore),
+
+    verdict: incomingStatus.toLowerCase(),
+
+    reasons: incomingReasons,
+
+    checks: {
+
+      https: !incomingReasons.includes(
+        "URL is not using HTTPS"
+      ),
+
+      ipAddress: !incomingReasons.includes(
+        "IP address used instead of domain name"
+      ),
+
+      longUrl: !incomingReasons.includes(
+        "URL is very long"
+      ),
+
+      keyword: !incomingReasons.includes(
+        "Suspicious keyword found"
+      ),
+
+      specialChar: !incomingReasons.includes(
+        "Suspicious special characters found"
+      ),
+
+      domainPattern: !incomingReasons.includes(
+        "Suspicious domain pattern detected"
+      )
+
+    }
+
+  };
+
+  lastAnalysis = analysis;
+
+  renderScore(analysis);
+
+  saveScan(currentUrl, analysis);
+
+ // ---------------------------------------------
+// SHOW CONTINUE BUTTON FOR ALL RESULTS
+// ---------------------------------------------
+if (continueBtn) {
+  continueBtn.style.display = "block";
+}
+} else {
+
+  // Manual scan from popup
   runCheck(currentUrl);
+
+}
+
 });

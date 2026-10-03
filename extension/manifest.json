@@ -13,14 +13,19 @@
   "permissions": [
     "tabs",
     "storage",
-    "windows"
+    "windows",
+    "webNavigation"
   ],
 
   "host_permissions": [
     "<all_urls>",
-    "https://web-guard-qtkt-psi.vercel.app/"
+    "https://web-guard-qtkt-psi.vercel.app/*"
   
   ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
 
   "action": {
     "default_popup": "popup.html"
