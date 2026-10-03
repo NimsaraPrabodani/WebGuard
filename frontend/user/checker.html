@@ -60,8 +60,8 @@
       </button>
       <h1>URL Scanner</h1>
       <div class="topbar-right">
-        <div class="role-toggle">
-          <a href="index.html">User</a>
+               <div class="role-toggle">
+          <a href="index.html" class="active">User</a>
           <a href="../admin/login.html">Admin</a>
         </div>
       </div>
@@ -69,7 +69,7 @@
 
     <section class="content">
 
-      <h2 class="page-title">Scan a URL</h2>
+      <h2 class="page-title">Scan URL</h2>
       <p class="page-sub">Enter any website URL to check if it's safe or a phishing attempt.</p>
 
       <div class="checker-grid">
@@ -96,92 +96,104 @@
                 <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
                 <path d="M9 12l2 2 4-4"/>
               </svg>
-              We never store your data. Your scans are private and secure.
+              Your scans are private and secure.
             </div>
           </div>
 
-          <!-- Info cards -->
-          <div class="info-grid">
+          <!-- Info cards carousel -->
+          <div class="info-carousel-wrap">
+            <button class="carousel-arrow prev" id="infoPrev" aria-label="Previous tip">‹</button>
 
-            <div class="info-card card-search">
-              <div class="info-card-head">
-                <span class="info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.5-4.5"/></svg>
-                </span>
-                <h4>Tips for Identifying<br>Phishing Websites</h4>
-              </div>
-              <ul class="info-list">
-                <li>Check the URL carefully for spelling mistakes.</li>
-                <li>Ensure the website uses <strong>HTTPS</strong> and has a valid certificate.</li>
-                <li>Look for poor design, broken links or grammar errors.</li>
-                <li>Verify the domain name before entering any information.</li>
-                <li>Be cautious of websites asking for sensitive information.</li>
-                <li>Hover over links to see the real destination.</li>
-                <li>Check for contact info and privacy policies.</li>
-              </ul>
-              <div class="url-preview">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/></svg>
-                <span>https://www.example.com</span>
-                <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-              </div>
-            </div>
+            <div class="info-carousel" id="infoCarousel">
 
-            <div class="info-card card-alert">
-              <div class="info-card-head">
-                <span class="info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 16H3l9-16z"/><path d="M12 9v4M12 16h.01" stroke-width="2"/></svg>
-                </span>
-                <h4>Common Phishing<br>Techniques</h4>
-              </div>
-              <ul class="info-list">
-                <li>Fake login pages that imitate trusted websites.</li>
-                <li>Emails or messages containing malicious links.</li>
-                <li>Urgent security alerts asking you to verify your account.</li>
-                <li>Fake banking or payment requests.</li>
-                <li>Prize, lottery, or gift card scams.</li>
-                <li>Social media impersonation attacks.</li>
-                <li>QR code phishing (Quishing).</li>
-                <li>Pop-up messages claiming your device is infected.</li>
-              </ul>
-            </div>
-
-            <div class="info-card card-shield">
-              <div class="info-card-head">
-                <span class="info-icon">
+              <div class="info-card card-search">
+                <div class="info-card-head">
+                  <span class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.5-4.5"/></svg>
+                  </span>
+                  <h4>Tips for Identifying Phishing Websites</h4>
+                </div>
+                <ul class="info-list">
+                  <li>Check the URL carefully for spelling mistakes.</li>
+                  <li>Ensure the website uses <strong>HTTPS</strong> and has a valid certificate.</li>
+                  <li>Look for poor design, broken links or grammar errors.</li>
+                  <li>Verify the domain name before entering any information.</li>
+                  <li>Be cautious of websites asking for sensitive information.</li>
+                  <li>Hover over links to see the real destination.</li>
+                  <li>Check for contact info and privacy policies.</li>
+                </ul>
+                <div class="url-preview">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/></svg>
-                </span>
-                <h4>Safe Browsing<br>Guidelines</h4>
+                  <span>https://www.example.com</span>
+                  <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                </div>
               </div>
-              <ul class="info-list">
-                <li>Keep your browser and operating system updated.</li>
-                <li>Use strong, unique passwords for every account.</li>
-                <li>Enable Two-Factor Authentication (2FA).</li>
-                <li>Avoid clicking suspicious links or downloading unknown files.</li>
-                <li>Use trusted antivirus and security software.</li>
-                <li>Only download software from official websites.</li>
-                <li>Regularly clear browser cache and cookies.</li>
-              </ul>
-            </div>
 
-            <div class="info-card card-lock">
-              <div class="info-card-head">
-                <span class="info-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
-                </span>
-                <h4>What to Do Before<br>Entering Passwords</h4>
+              <div class="info-card card-alert">
+                <div class="info-card-head">
+                  <span class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 16H3l9-16z"/><path d="M12 9v4M12 16h.01" stroke-width="2"/></svg>
+                  </span>
+                  <h4>Common Phishing Techniques</h4>
+                </div>
+                <ul class="info-list">
+                  <li>Fake login pages that imitate trusted websites.</li>
+                  <li>Emails or messages containing malicious links.</li>
+                  <li>Urgent security alerts asking you to verify your account.</li>
+                  <li>Fake banking or payment requests.</li>
+                  <li>Prize, lottery, or gift card scams.</li>
+                  <li>Social media impersonation attacks.</li>
+                  <li>QR code phishing (Quishing).</li>
+                  <li>Pop-up messages claiming your device is infected.</li>
+                </ul>
               </div>
-              <ul class="info-list">
-                <li>Confirm the website address is correct.</li>
-                <li>Check for the HTTPS padlock icon.</li>
-                <li>Make sure the login page belongs to the official website.</li>
-                <li>Verify there are no spelling mistakes in the domain name.</li>
-                <li>Never enter passwords after clicking links from suspicious emails.</li>
-                <li>If unsure, manually type the website address into the browser.</li>
-                <li>Ensure the browser does not display security warnings.</li>
-                <li>Use a password manager to detect fake login pages.</li>
-              </ul>
-            </div>
 
+              <div class="info-card card-shield">
+                <div class="info-card-head">
+                  <span class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/></svg>
+                  </span>
+                  <h4>Safe Browsing Guidelines</h4>
+                </div>
+                <ul class="info-list">
+                  <li>Keep your browser and operating system updated.</li>
+                  <li>Use strong, unique passwords for every account.</li>
+                  <li>Enable Two-Factor Authentication (2FA).</li>
+                  <li>Avoid clicking suspicious links or downloading unknown files.</li>
+                  <li>Use trusted antivirus and security software.</li>
+                  <li>Only download software from official websites.</li>
+                  <li>Regularly clear browser cache and cookies.</li>
+                </ul>
+              </div>
+
+              <div class="info-card card-lock">
+                <div class="info-card-head">
+                  <span class="info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                  </span>
+                  <h4>What to Do Before Entering Passwords</h4>
+                </div>
+                <ul class="info-list">
+                  <li>Confirm the website address is correct.</li>
+                  <li>Check for the HTTPS padlock icon.</li>
+                  <li>Make sure the login page belongs to the official website.</li>
+                  <li>Verify there are no spelling mistakes in the domain name.</li>
+                  <li>Never enter passwords after clicking links from suspicious emails.</li>
+                  <li>If unsure, manually type the website address into the browser.</li>
+                  <li>Ensure the browser does not display security warnings.</li>
+                  <li>Use a password manager to detect fake login pages.</li>
+                </ul>
+              </div>
+
+            </div>
+            <button class="carousel-arrow next" id="infoNext" aria-label="Next tip">›</button>
+          </div>
+
+          <div class="carousel-dots" id="infoDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
           </div>
 
         </div>
@@ -258,7 +270,6 @@
 <script src="../js/main.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/checker.js"></script>
-
 
 </body>
 </html>

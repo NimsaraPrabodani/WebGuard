@@ -3,7 +3,7 @@
    Base URL: http://10.103.26.203:5000
    ========================================================= */
 
-const API_BASE = 'http://10.103.26.203:5000';
+const API_BASE = 'https://web-guard-qtkt-psi.vercel.app';
 
 // ── 1. Scan a URL ──────────────────────────────────────────
 async function scanURL(url) {
