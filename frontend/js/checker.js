@@ -38,3 +38,34 @@ document.getElementById('scanBtn').addEventListener('click', async () => {
 document.getElementById('urlInput').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') document.getElementById('scanBtn').click();
 });
+
+// ── Info cards carousel ──────────────────────────────────
+const carousel = document.getElementById('infoCarousel');
+const dots = document.querySelectorAll('#infoDots .dot');
+const prevBtn = document.getElementById('infoPrev');
+const nextBtn = document.getElementById('infoNext');
+
+function scrollToCard(index) {
+  const card = carousel.children[index];
+  if (card) carousel.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+}
+
+function getActiveIndex() {
+  const cardWidth = carousel.children[0]?.offsetWidth + 12 || 1;
+  return Math.round(carousel.scrollLeft / cardWidth);
+}
+
+function updateDots() {
+  const active = getActiveIndex();
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+}
+
+prevBtn?.addEventListener('click', () => scrollToCard(Math.max(getActiveIndex() - 1, 0)));
+nextBtn?.addEventListener('click', () => scrollToCard(Math.min(getActiveIndex() + 1, carousel.children.length - 1)));
+
+dots.forEach((dot, i) => dot.addEventListener('click', () => scrollToCard(i)));
+
+carousel?.addEventListener('scroll', () => {
+  clearTimeout(carousel._scrollTimer);
+  carousel._scrollTimer = setTimeout(updateDots, 100);
+});
