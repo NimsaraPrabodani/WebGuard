@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function checkUrlWithBackend(url) {
 
     console.log("Sending to Flask:", url);
-    const response = await fetch("http://localhost:5000/check-url", {
+    const response = await fetch("https://web-guard-qtkt-psi.vercel.app/check-url", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
