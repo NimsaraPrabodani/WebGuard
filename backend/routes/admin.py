@@ -6,11 +6,16 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 
 
-admin_bp = Blueprint("admin",__name__)
+admin_bp = Blueprint("admin", __name__)
+
+
+# =========================================================
+# ADMIN LOGIN
+# =========================================================
 
 @admin_bp.route("/login", methods=["POST"])
 def login_admin():
-    
+
     data = request.json
 
     email = data.get("email")
@@ -19,93 +24,106 @@ def login_admin():
     if not email or not password:
 
         return jsonify({
-            "message" : "Email and Password required"
-        }),400
-    
-    
+            "message": "Email and Password required"
+        }), 400
+
     admin = admin_collection.find_one({
-        "email" : email
+        "email": email
     })
 
     if not admin:
 
         return jsonify({
-            "message" : "Admin not found"
-        }),404
-    
+            "message": "Admin not found"
+        }), 404
+
     if check_password_hash(
         admin["password"],
         password
     ):
-        return jsonify({
-            "message" : "Login Success",
-            "admin":{
-                "name" : admin["name"],
-                "email":admin["email"]
-            }
-        }),200
-    
-    else: 
 
         return jsonify({
-            "message" : "Wrong Password"
-        }),401
-    
+            "message": "Login Success",
+            "admin": {
+                "name": admin["name"],
+                "email": admin["email"]
+            }
+        }), 200
+
+    else:
+
+        return jsonify({
+            "message": "Wrong Password"
+        }), 401
+
+
+# =========================================================
+# ADMIN TEST
+# =========================================================
+
 @admin_bp.route("/test", methods=["GET"])
 def test():
     return "Admin route is working"
 
-# monthly reporte genarate
+
+# =========================================================
+# MONTHLY REPORT
+# =========================================================
 
 @admin_bp.route("/monthly-report", methods=["GET"])
 def monthly_report():
 
     month = request.args.get("month")
 
+    # -----------------------------------------------------
     # Check month
+    # -----------------------------------------------------
+
     if not month:
         return jsonify({
             "error": "Please provide month in YYYY-MM format"
         }), 400
 
     try:
+
         start_date = datetime.strptime(
             month + "-01",
             "%Y-%m-%d"
         )
 
-        if start_date.month == 12:
-            end_date = datetime(
-                start_date.year + 1,
-                1,
-                1
-            )
-        else:
-            end_date = datetime(
-                start_date.year,
-                start_date.month + 1,
-                1
-            )
-
     except ValueError:
+
         return jsonify({
             "error": "Invalid month. Use YYYY-MM"
         }), 400
 
 
+    # -----------------------------------------------------
     # Get records for selected month
+    #
+    # IMPORTANT:
+    # Database stores date as STRING.
+    # Example:
+    # 2026-10-03 13:40:07.216796
+    #
+    # Therefore we use regex instead of datetime range.
+    # -----------------------------------------------------
+
     records = list(
         url_collection.find({
             "date": {
-                "$gte": start_date,
-                "$lt": end_date
+                "$regex": f"^{month}"
             }
         }).sort("date", 1)
     )
 
 
+    # -----------------------------------------------------
     # Calculate summary
+    # -----------------------------------------------------
+
     total = len(records)
+
     safe = 0
     suspicious = 0
     phishing = 0
@@ -114,41 +132,59 @@ def monthly_report():
 
         status = str(
             record.get("status", "")
-        ).lower()
+        ).lower().strip()
 
         if status == "safe":
+
             safe += 1
 
         elif status == "suspicious":
+
             suspicious += 1
 
-        elif status == "phishing":
+        # Database uses "Dangerous"
+        # PDF displays it as "Phishing"
+        elif status in ["dangerous", "phishing"]:
+
             phishing += 1
 
 
+    # -----------------------------------------------------
     # Calculate percentages
+    # -----------------------------------------------------
+
     if total > 0:
+
         safe_percentage = (safe / total) * 100
         suspicious_percentage = (suspicious / total) * 100
         phishing_percentage = (phishing / total) * 100
+        total_percentage = 100
+
     else:
+
         safe_percentage = 0
         suspicious_percentage = 0
         phishing_percentage = 0
+        total_percentage = 0
 
 
-    # Create PDF
+    # =====================================================
+    # CREATE PDF
+    # =====================================================
+
     pdf = BytesIO()
 
     c = canvas.Canvas(pdf)
 
     width, height = 595, 842
 
+
     # =====================================================
     # HEADER
     # =====================================================
 
     c.setFont("Helvetica-Bold", 20)
+
     c.drawCentredString(
         width / 2,
         height - 50,
@@ -156,6 +192,7 @@ def monthly_report():
     )
 
     c.setFont("Helvetica-Bold", 14)
+
     c.drawCentredString(
         width / 2,
         height - 75,
@@ -184,22 +221,46 @@ def monthly_report():
     y = height - 170
 
     c.setFont("Helvetica-Bold", 12)
-    c.drawString(50, y, "MONTHLY SUMMARY")
+
+    c.drawString(
+        50,
+        y,
+        "MONTHLY SUMMARY"
+    )
 
     y -= 25
 
     c.setFont("Helvetica", 10)
 
-    c.drawString(60, y, f"Total Scans     : {total}")
+    c.drawString(
+        60,
+        y,
+        f"Total Scans     : {total}"
+    )
+
     y -= 18
 
-    c.drawString(60, y, f"Safe URLs       : {safe}")
+    c.drawString(
+        60,
+        y,
+        f"Safe URLs       : {safe}"
+    )
+
     y -= 18
 
-    c.drawString(60, y, f"Suspicious URLs : {suspicious}")
+    c.drawString(
+        60,
+        y,
+        f"Suspicious URLs : {suspicious}"
+    )
+
     y -= 18
 
-    c.drawString(60, y, f"Phishing URLs   : {phishing}")
+    c.drawString(
+        60,
+        y,
+        f"Phishing URLs   : {phishing}"
+    )
 
 
     # =====================================================
@@ -209,41 +270,124 @@ def monthly_report():
     y -= 40
 
     c.setFont("Helvetica-Bold", 12)
-    c.drawString(50, y, "DETECTION SUMMARY")
+
+    c.drawString(
+        50,
+        y,
+        "DETECTION SUMMARY"
+    )
 
     y -= 25
 
     c.setFont("Helvetica-Bold", 9)
 
-    c.drawString(60, y, "Status")
-    c.drawString(230, y, "Count")
-    c.drawString(330, y, "Percentage")
+    c.drawString(
+        60,
+        y,
+        "Status"
+    )
+
+    c.drawString(
+        230,
+        y,
+        "Count"
+    )
+
+    c.drawString(
+        330,
+        y,
+        "Percentage"
+    )
 
     y -= 18
 
     c.setFont("Helvetica", 9)
 
-    c.drawString(60, y, "Safe")
-    c.drawString(230, y, str(safe))
-    c.drawString(330, y, f"{safe_percentage:.2f}%")
+    # Safe
+
+    c.drawString(
+        60,
+        y,
+        "Safe"
+    )
+
+    c.drawString(
+        230,
+        y,
+        str(safe)
+    )
+
+    c.drawString(
+        330,
+        y,
+        f"{safe_percentage:.2f}%"
+    )
 
     y -= 18
 
-    c.drawString(60, y, "Suspicious")
-    c.drawString(230, y, str(suspicious))
-    c.drawString(330, y, f"{suspicious_percentage:.2f}%")
+    # Suspicious
+
+    c.drawString(
+        60,
+        y,
+        "Suspicious"
+    )
+
+    c.drawString(
+        230,
+        y,
+        str(suspicious)
+    )
+
+    c.drawString(
+        330,
+        y,
+        f"{suspicious_percentage:.2f}%"
+    )
 
     y -= 18
 
-    c.drawString(60, y, "Phishing")
-    c.drawString(230, y, str(phishing))
-    c.drawString(330, y, f"{phishing_percentage:.2f}%")
+    # Phishing
+
+    c.drawString(
+        60,
+        y,
+        "Phishing"
+    )
+
+    c.drawString(
+        230,
+        y,
+        str(phishing)
+    )
+
+    c.drawString(
+        330,
+        y,
+        f"{phishing_percentage:.2f}%"
+    )
 
     y -= 18
 
-    c.drawString(60, y, "Total")
-    c.drawString(230, y, str(total))
-    c.drawString(330, y, "100.00%")
+    # Total
+
+    c.drawString(
+        60,
+        y,
+        "Total"
+    )
+
+    c.drawString(
+        230,
+        y,
+        str(total)
+    )
+
+    c.drawString(
+        330,
+        y,
+        f"{total_percentage:.2f}%"
+    )
 
 
     # =====================================================
@@ -252,26 +396,67 @@ def monthly_report():
 
     y -= 40
 
-    c.setFont("Helvetica-Bold", 12)
-    c.drawString(50, y, "SCAN DETAILS")
+    c.setFont(
+        "Helvetica-Bold",
+        12
+    )
+
+    c.drawString(
+        50,
+        y,
+        "SCAN DETAILS"
+    )
 
     y -= 25
 
-    # Table header
-    c.setFont("Helvetica-Bold", 8)
 
-    c.drawString(50, y, "Date")
-    c.drawString(120, y, "URL")
-    c.drawString(390, y, "Score")
-    c.drawString(440, y, "Status")
+    # Table header
+
+    c.setFont(
+        "Helvetica-Bold",
+        8
+    )
+
+    c.drawString(
+        50,
+        y,
+        "Date"
+    )
+
+    c.drawString(
+        120,
+        y,
+        "URL"
+    )
+
+    c.drawString(
+        390,
+        y,
+        "Score"
+    )
+
+    c.drawString(
+        440,
+        y,
+        "Status"
+    )
 
     y -= 15
 
-    c.setFont("Helvetica", 7)
+    c.setFont(
+        "Helvetica",
+        7
+    )
+
+
+    # =====================================================
+    # SCAN RECORDS
+    # =====================================================
 
     for record in records:
 
         # New page when necessary
+
         if y < 50:
 
             c.setFont(
@@ -307,10 +492,29 @@ def monthly_report():
                 8
             )
 
-            c.drawString(50, y, "Date")
-            c.drawString(120, y, "URL")
-            c.drawString(390, y, "Score")
-            c.drawString(440, y, "Status")
+            c.drawString(
+                50,
+                y,
+                "Date"
+            )
+
+            c.drawString(
+                120,
+                y,
+                "URL"
+            )
+
+            c.drawString(
+                390,
+                y,
+                "Score"
+            )
+
+            c.drawString(
+                440,
+                y,
+                "Status"
+            )
 
             y -= 15
 
@@ -320,33 +524,83 @@ def monthly_report():
             )
 
 
+        # -------------------------------------------------
+        # DATE
+        # -------------------------------------------------
+
         date_value = record.get("date")
 
         if date_value:
-            date_text = date_value.strftime(
-                "%d/%m/%Y"
-            )
+
+            try:
+
+                parsed_date = datetime.strptime(
+                    str(date_value),
+                    "%Y-%m-%d %H:%M:%S.%f"
+                )
+
+                date_text = parsed_date.strftime(
+                    "%d/%m/%Y"
+                )
+
+            except ValueError:
+
+                try:
+
+                    parsed_date = datetime.strptime(
+                        str(date_value),
+                        "%Y-%m-%d %H:%M:%S"
+                    )
+
+                    date_text = parsed_date.strftime(
+                        "%d/%m/%Y"
+                    )
+
+                except ValueError:
+
+                    date_text = str(date_value)
+
         else:
+
             date_text = "-"
 
+
+        # -------------------------------------------------
+        # URL
+        # -------------------------------------------------
 
         url = str(
             record.get("url", "-")
         )
 
         # Shorten long URLs
+
         if len(url) > 40:
+
             url = url[:37] + "..."
 
+
+        # -------------------------------------------------
+        # SCORE
+        # -------------------------------------------------
 
         score = str(
             record.get("score", "-")
         )
 
+
+        # -------------------------------------------------
+        # STATUS
+        # -------------------------------------------------
+
         status = str(
             record.get("status", "-")
         )
 
+
+        # -------------------------------------------------
+        # DRAW DATA
+        # -------------------------------------------------
 
         c.drawString(
             50,
@@ -391,13 +645,19 @@ def monthly_report():
     )
 
 
-    # Finish PDF
+    # =====================================================
+    # FINISH PDF
+    # =====================================================
+
     c.save()
 
     pdf.seek(0)
 
 
-    # Download PDF
+    # =====================================================
+    # DOWNLOAD PDF
+    # =====================================================
+
     return send_file(
         pdf,
         mimetype="application/pdf",
