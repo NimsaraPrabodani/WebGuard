@@ -42,3 +42,26 @@ cards.forEach(card => {
   card.style.transition = 'opacity 0.45s ease, transform 0.45s ease, box-shadow 0.2s, border-color 0.2s';
   observer.observe(card);
 });
+
+// ── Extension install instructions modal ──────────────────
+const installModalOverlay = document.getElementById('installModalOverlay');
+const howToInstallBtn = document.getElementById('howToInstallBtn');
+const installModalClose = document.getElementById('installModalClose');
+
+howToInstallBtn?.addEventListener('click', () => {
+  installModalOverlay.classList.add('open');
+});
+
+installModalClose?.addEventListener('click', () => {
+  installModalOverlay.classList.remove('open');
+});
+
+installModalOverlay?.addEventListener('click', (e) => {
+  if (e.target === installModalOverlay) {
+    installModalOverlay.classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') installModalOverlay?.classList.remove('open');
+});

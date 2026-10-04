@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../css/dashboard.css">
 <link rel="stylesheet" href="../css/admin.css">
 </head>
-<body>
+<body class="admin-page">
 <script src="../js/auth-guard.js"></script>
 
 <div class="app">
@@ -217,19 +217,68 @@
             </div>
           </div>
 
-          <div class="panel reports-panel">
-            <div class="panel-head">
-              <h3>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
-                Manage Reports
-              </h3>
+        </div>
+      </div>
+
+      <!-- Reports row: Download Monthly Report (wide) + Manage Reports (narrow) side by side -->
+      <div class="reports-row">
+
+        <!-- Download Monthly Report -->
+        <div class="panel report-panel">
+          <div class="report-head">
+            <span class="report-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v12m0 0l-4-4m4 4l4-4"/>
+                <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+              </svg>
+            </span>
+            <div>
+              <h3>Download Monthly Report</h3>
+              <p class="desc">Generate the monthly WebGuard security report as a PDF file.</p>
             </div>
-            <div class="reports-count">7</div>
-            <p class="desc">Scan results users have flagged as incorrect, awaiting review.</p>
-            <a href="reports.html" class="btn-ghost" style="display:inline-block;">Review reports →</a>
           </div>
 
+          <div class="report-fields">
+            <div class="report-field">
+              <label for="reportMonth">Report Month</label>
+              <input type="month" id="reportMonth">
+            </div>
+
+            <div class="report-field">
+              <label>Format</label>
+              <div class="format-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M7 3.5h7l3 3V20a.6.6 0 01-.6.6H7.6A.6.6 0 017 20V3.5z"/>
+                </svg>
+                PDF
+              </div>
+            </div>
+          </div>
+
+          <div class="report-footer">
+            <span id="reportCount" class="report-count">Select a month to generate the report</span>
+            <button class="btn-primary report-download-btn" id="downloadReportBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                <path d="M12 3v12m0 0l-4-4m4 4l4-4"/>
+                <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+              </svg>
+              Download PDF
+            </button>
+          </div>
         </div>
+
+        <div class="panel reports-panel">
+          <div class="panel-head">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+              Manage Reports
+            </h3>
+          </div>
+          <div class="reports-count">7</div>
+          <p class="desc">Scan results users have flagged as incorrect, awaiting review.</p>
+          <button type="button" id="reviewReportsBtn" class="btn-ghost" style="display:inline-block;">Review reports →</button>
+        </div>
+
       </div>
 
     </section>
@@ -238,10 +287,20 @@
   </div>
 </div>
 
+
+
+<div id="pdfModal" class="pdf-modal" hidden>
+  <div class="pdf-box">
+    <button id="closePdf">✕ Close</button>
+    <iframe id="pdfFrame"></iframe>
+  </div>
+</div>
+
 <script src="../js/main.js"></script>
 <script src="../js/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <script src="../js/dashboard.js"></script>
 <script src="../js/admin.js"></script>
-
 </body>
 </html>

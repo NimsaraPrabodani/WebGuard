@@ -80,7 +80,7 @@
 .scan-table td{
   padding:12px 8px;font-size:13.5px;border-bottom:1px solid var(--border-soft);
 }
-.scan-table tr:last-child td{border-bottom:none;}
+.scan-table tr:last-child td{border-bottom:1px solid var(--border-soft);}
 
 /* Long URLs wrap onto multiple lines instead of stretching the row */
 .url-cell{

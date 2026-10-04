@@ -42,3 +42,19 @@ async function adminLogin(email, password) {
   });
   return await response.json();
 }
+
+// ── Admin: generate/download monthly report ────────────────
+async function generateReport(month) {
+  const response = await fetch(
+    `${API_BASE}/admin/monthly-report?month=${encodeURIComponent(month)}`,
+    {
+      method: 'GET'
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error('Report generation failed');
+  }
+
+  return await response.blob();
+}
