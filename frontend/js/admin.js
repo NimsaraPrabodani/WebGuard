@@ -169,6 +169,102 @@ if (scanBtn && scanInput) {
   });
 }
 
+// ── Download Reports ──────────────────────────────────────
+document.getElementById('reportMonth')?.addEventListener('change', (e) => {
+  const countEl = document.getElementById('reportCount');
+  if (!countEl) return;
+
+  if (!e.target.value) {
+    countEl.textContent = 'Select a month to generate the report';
+    return;
+  }
+
+  const [year, monthNum] = e.target.value.split('-');
+  const monthName = new Date(year, monthNum - 1).toLocaleString('default', { month: 'long' });
+  countEl.textContent = `Ready to generate report for ${monthName} ${year}`;
+});
+
+document.getElementById('downloadReportBtn')?.addEventListener('click', async () => {
+  const btn = document.getElementById('downloadReportBtn');
+  const monthInput = document.getElementById('reportMonth');
+  const month = monthInput.value;
+
+  if (!month) {
+    alert('Please select a report month.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+
+  try {
+    const blob = await generateReport(month);
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `WebGuard_Monthly_Report_${month}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    alert('Could not generate the report: ' + error.message);
+    console.error('Report generation error:', error);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+        <path d="M12 3v12m0 0l-4-4m4 4l4-4"/>
+        <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+      </svg>
+      Download PDF
+    `;
+  }
+});
+
+
 // ── 4. Run on page load ───────────────────────────────────
 loadAdminStats();
 loadAdminHistory();
+// ── Review Reports (preview PDF in pop-up, no download) ───
+(function () {
+  const btn   = document.getElementById('reviewReportsBtn');
+  const modal = document.getElementById('pdfModal');
+  const frame = document.getElementById('pdfFrame');
+  const close = document.getElementById('closePdf');
+  if (!btn || !modal || !frame || !close) return;
+
+  let pdfUrl = null;
+
+  btn.addEventListener('click', async () => {
+    // Use the month picked in "Download Monthly Report", else the current month
+    const picked = document.getElementById('reportMonth')?.value;
+    const now = new Date();
+    const month = picked ||
+      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Loading...';
+
+    try {
+      const blob = await generateReport(month);
+      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+      pdfUrl = URL.createObjectURL(blob);
+      frame.src = pdfUrl + '#toolbar=0&navpanes=0';
+      modal.hidden = false;
+    } catch (error) {
+      alert('Could not load the report: ' + error.message);
+      console.error(error);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+
+  close.addEventListener('click', () => {
+    modal.hidden = true;
+    frame.src = '';
+    if (pdfUrl) { URL.revokeObjectURL(pdfUrl); pdfUrl = null; }
+  });
+})();
