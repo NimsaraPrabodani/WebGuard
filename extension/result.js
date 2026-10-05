@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentUrl = '';
   let lastAnalysis = null;
 
-  // ---------------------------------------------
-// CONTINUE TO WEBSITE
-// ---------------------------------------------
+
+//CONTINUE TO WEBSITE
+
 if (continueBtn) {
   continueBtn.addEventListener("click", async () => {
 
@@ -268,9 +268,8 @@ console.log(
     });
   }
 
-// ---------------------------------------------
+
 // CONTINUE ANYWAY
-// ---------------------------------------------
 
 if (continueBtn) {
 
@@ -384,9 +383,8 @@ if (
 
   saveScan(currentUrl, analysis);
 
- // ---------------------------------------------
+
 // SHOW CONTINUE BUTTON FOR ALL RESULTS
-// ---------------------------------------------
 if (continueBtn) {
   continueBtn.style.display = "block";
 }
