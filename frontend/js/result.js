@@ -1,17 +1,17 @@
-/* =========================================================
+/* 
    result.js — Scan Result page
    Reads result from localStorage and fills the page
    Backend response format:
    {
      url, score, status, reasons, date
    }
-   ========================================================= */
+    */
 
 const data = JSON.parse(localStorage.getItem('scanResult'));
 
 if (!data) {
   // No result found — redirect back to checker
-  window.location.href = 'checker.html';
+  window.location.href =  'checker.html';
 }
 
 // ── Fill scanned URL ──────────────────────────────────────

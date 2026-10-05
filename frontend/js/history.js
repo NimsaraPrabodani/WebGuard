@@ -1,7 +1,7 @@
-/* =========================================================
+/* 
    history.js — Scan History page
    Calls GET /history and fills the table with real data
-   ========================================================= */
+    */
 
 async function loadHistory() {
   const tbody = document.getElementById('historyBody');

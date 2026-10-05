@@ -1,6 +1,6 @@
-/* =========================================================
+/* 
    home.js — interactions for home.html only
-   ========================================================= */
+   */
 
 // Highlight active nav link on scroll
 const sections = document.querySelectorAll('section[id], footer[id]');
