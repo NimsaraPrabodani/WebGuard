@@ -1,10 +1,10 @@
-/* =========================================================
+/* 
    admin.js — Admin Dashboard
    Connects to:
      GET  /stats       → stat cards + donut chart
      GET  /history     → recent scans table
      POST /check-url   → manual scan button
-   ========================================================= */
+   */
 
 // ── 1. Load stats into stat cards + donut chart ───────────
 async function loadAdminStats() {

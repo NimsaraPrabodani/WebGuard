@@ -1,7 +1,7 @@
-/* =========================================================
+/* 
    api.js — shared API functions for all pages
    Base URL: http://10.103.26.203:5000
-   ========================================================= */
+   */
 
 const API_BASE = 'https://web-guard-qtkt-psi.vercel.app';
 

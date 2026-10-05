@@ -1,7 +1,7 @@
-/* =========================================================
+/* 
    checker.js — URL Scanner page
    Calls POST /check-url and redirects to result.html
-   ========================================================= */
+    */
 
 document.getElementById('scanBtn').addEventListener('click', async () => {
   const url = document.getElementById('urlInput').value.trim();

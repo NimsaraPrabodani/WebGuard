@@ -1,7 +1,7 @@
-/* =========================================================
+/* 
    login.js — Admin Login page
    Calls POST /admin/login via adminLogin() in api.js
-   ========================================================= */
+    */
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();

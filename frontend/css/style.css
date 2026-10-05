@@ -1,9 +1,9 @@
-/* =========================================================
+/* 
    style.css — SHARED across every page (dashboard, checker,
    history, about). Sidebar, topbar, theme colors, buttons,
    and result badges all live here so every page looks
    consistent without repeating code.
-   ========================================================= */
+    */
 
 :root{
   --bg:#0a0e14;

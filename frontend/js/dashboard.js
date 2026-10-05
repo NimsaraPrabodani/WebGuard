@@ -1,8 +1,8 @@
-/* =========================================================
+/* 
    dashboard.js — page-specific JS ONLY used on dashboard.html
    (stat counters, donut chart drawing, manual scan button).
    Load main.js first, then this file.
-   ========================================================= */
+    */
 
 // Count-up animation for stat values
 document.querySelectorAll('[data-count]').forEach(el => {
