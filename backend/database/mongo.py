@@ -14,4 +14,4 @@ url_collection = db["url_history"]
 admin_collection = db["admin"]
 
 
-print("MongoDB Connected Successfully!")
+print("MongoDB Connected Successfully!") 

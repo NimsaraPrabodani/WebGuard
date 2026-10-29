@@ -1,8 +1,8 @@
-/* =========================================================
+/* 
    main.js — SHARED across every page: mobile sidebar
    toggle + nav active-state highlighting. Include this on
    checker.html, history.html, and about.html too.
-   ========================================================= */
+    */
 
 const sidebar = document.getElementById('sidebar');
 

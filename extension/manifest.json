@@ -12,14 +12,20 @@
 
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "windows",
+    "webNavigation"
   ],
 
   "host_permissions": [
-    "http://127.0.0.1:5000/*",
-    "http://localhost:5000/*",
-    "http://172.17.53.117:5000/*"
+    "<all_urls>",
+    "https://web-guard-qtkt-psi.vercel.app/*"
+  
   ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
 
   "action": {
     "default_popup": "popup.html"

@@ -25,10 +25,11 @@
       <span>Phishing Detection System</span>
     </div>
   </div>
-  <ul class="nav-links">
+   <ul class="nav-links">
     <li><a href="home.html" class="active">Home</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="user/about.html">About</a></li>
+
+    <li><a href="downloads/webguard-extension.zip" download>Extension</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="user/checker.html" class="btn-get-started">Get Started</a>
@@ -199,7 +200,7 @@
     <p>View detailed analysis<br>and explanations.</p>
   </div>
 
-  <div class="ftr-card">
+   <div class="ftr-card">
     <div class="ftr-icon-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3z"/>
@@ -210,11 +211,48 @@
     <p>Protect yourself from online<br>threats and fraud.</p>
   </div>
 
+      <div class="ftr-card">
+    <div class="ftr-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="3"/>
+        <path d="M9 9h6v6H9z"/>
+      </svg>
+    </div>
+    <h3>Browser Extension</h3>
+    <p>Scan URLs instantly right<br>from your browser toolbar.</p>
+    <div class="ftr-ext-actions">
+      <a href="downloads/webguard-extension.zip" class="ftr-link" download>Get the Extension →</a>
+      <button class="ftr-link-secondary" id="howToInstallBtn" type="button">How to install</button>
+    </div>
+  </div>
+
 </section>
+
+<!-- Extension Install Instructions Modal -->
+<div class="install-modal-overlay" id="installModalOverlay">
+  <div class="install-modal">
+    <button class="install-modal-close" id="installModalClose" aria-label="Close">×</button>
+    <h3>Install the WebGuard Extension</h3>
+    <p class="install-modal-sub">Follow these steps after downloading the ZIP file.</p>
+    <ol class="install-steps">
+      <li>Download the WebGuard extension ZIP.</li>
+      <li>Extract the ZIP file.</li>
+      <li>Open Chrome and go to <code>chrome://extensions/</code></li>
+      <li>Enable Developer mode.</li>
+      <li>Click Load unpacked.</li>
+      <li>Select the extracted extension folder.</li>
+    </ol>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="home-footer" id="contact">
-  © 2024 <em>WebGuard</em>. All rights reserved.
+  <div class="contact-card">
+    <h3>Contact Us</h3>
+    <strong>WebGuard Team</strong>
+    <a href="mailto:webguard.detsystem@gmail.com">webguard.detsystem@gmail.com</a>
+  </div>
+  <p>© 2024 <em>WebGuard</em>. All rights reserved.</p>
 </footer>
 
 <script src="js/home.js"></script>
